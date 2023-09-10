@@ -82,7 +82,7 @@ public class TeacherDAO extends BaseDAO {
                 teacher.setId(rs.getInt("id"));
                 teacher.setName(rs.getString("name"));
                 teacher.setCPF(rs.getString("cpf"));
-                // Preencha o objeto Teacher com outros atributos, se necessário
+                // Preencher o objeto Teacher com od outros atributos
             }
         } catch (SQLException e) {
             e.printStackTrace();

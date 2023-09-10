@@ -67,7 +67,7 @@ public class DisciplineDAO extends BaseDAO {
                 discipline.setName(rs.getString("name"));
                 discipline.setCode(rs.getString("code"));
                 discipline.setStatus(DisciplineStatus.valueOf(rs.getString("status")));
-                // Preencha o objeto Discipline com outros atributos, se necessário
+                // Preencher o objeto Discipline com od outros atributos
             }
         } catch (SQLException e) {
             e.printStackTrace();
