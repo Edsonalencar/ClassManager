@@ -2,6 +2,7 @@ package com.classmanager.model;
 
 public class Historic {
 	private Class classe;
+	private Student student;
 	private Frequency frequency;
 	private SchoolGrade schoolGrade;
 	

@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class BaseDAO {
     Connection con = null;
-    String url = "jdbc:postgresql://localhost:5432/postgres";
+    String url = "jdbc:postgresql://localhost:5432/classmanager";
     String user = "postgres";
     String password = "postgres";
 

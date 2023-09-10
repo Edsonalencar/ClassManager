@@ -5,7 +5,8 @@ public class Address {
 	private String state;
 	private String district;
 	private int number;
-	
+
+
 	public String getCity() {
         return city;
     }
