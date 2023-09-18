@@ -4,14 +4,36 @@ import enums.ClassStatus;
 import java.util.ArrayList;
 
 public class Class {
-    private int id;
+    private Long id;
     private Discipline discipline;
     private Timetable timetable;
     private String local;
-    private String semestre;
+    private String period;
     private ClassStatus status;
     private ArrayList<Student> students;
     private ArrayList<Teacher> teachers;
+
+
+    public Class() {}
+    public Class(Long id, Discipline discipline, Timetable timetable, String local, String period, ClassStatus status, ArrayList<Student> students, ArrayList<Teacher> teachers) {
+        setDiscipline(discipline);
+        setLocal(local);
+        setStatus(status);
+        setPeriod(period);
+        setId(id);
+        setTimetable(timetable);
+        setTeachers(teachers);
+        setStudents(students);
+    }
+    public Class(Discipline discipline, Timetable timetable, String local, String period, ClassStatus status, ArrayList<Student> students, ArrayList<Teacher> teachers) {
+        setDiscipline(discipline);
+        setLocal(local);
+        setStatus(status);
+        setPeriod(period);
+        setTimetable(timetable);
+        setTeachers(teachers);
+        setStudents(students);
+    }
 
 
     public Discipline getDiscipline() {
@@ -30,13 +52,8 @@ public class Class {
         return local;
     }
     public void setLocal(String local) {
-        this.local = local;
-    }
-    public String getSemestre() {
-        return semestre;
-    }
-    public void setSemestre(String semestre) {
-        this.semestre = semestre;
+        if (!local.isEmpty() && local != null)
+            this.local = local;
     }
     public ClassStatus getStatus() {
         return status;
@@ -56,6 +73,24 @@ public class Class {
     public void setTeachers(ArrayList<Teacher> teachers) {
         this.teachers = teachers;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        if (id != null && id >= 0)
+            this.id = id;
+    }
+
+    public String getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(String period) {
+        this.period = period;
+    }
+
 
 
     public void register(Class Cl) {

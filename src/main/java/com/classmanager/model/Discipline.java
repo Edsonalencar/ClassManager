@@ -3,25 +3,40 @@ package com.classmanager.model;
 import enums.DisciplineStatus;
 
 public class Discipline {
+    private Long id;
     private  String name;
     private  String code;
     private DisciplineStatus status;
+
+
+    public Discipline() {
+    }
+
+    public Discipline(Long id, String name, String code, DisciplineStatus status) {
+        setId(id);
+        setName(name);
+        setCode(code);
+        setStatus(status);
+    }
+    public Discipline(String name, String code, DisciplineStatus status) {
+        setName(name);
+        setCode(code);
+        setStatus(status);
+    }
 
     public String getName() {
         return name;
     }
     public void setName(String name) {
-        if (!name.isEmpty()) {
+        if (!name.isEmpty() && name != null)
             this.name = name;
-        }
     }
     public String getCode() {
         return code;
     }
     public void setCode(String code) {
-        if (!name.isEmpty()) {
+        if (!name.isEmpty() && code != null)
             this.code = code;
-        }
     }
     public DisciplineStatus getStatus() {
         return status;
@@ -30,7 +45,14 @@ public class Discipline {
         this.status = status;
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        if (id != null && id >= 0)
+            this.id = id;
+    }
 
     public  void register(Discipline Ds) {
         //Cadastro no Banco de Dados

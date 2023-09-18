@@ -3,18 +3,30 @@ package com.classmanager.model;
 import java.util.ArrayList;
 
 public class Student {
+	private Long id;
 	private String name;
 	private String code;
 	private Address address;
-	private ArrayList<Historic> historic = new ArrayList(1);
-	
-	Student(String name, String code, Address address, ArrayList<Historic> historic) {
-		this.name = name;
-		this.code = code;
-		this.address = address;
-		this.historic = historic;
+	private Historic historic;
+
+
+	public Student() {
 	}
-	
+
+	public Student(Long id, String name, String code, Address address, Historic historic) {
+		setId(id);
+		setName(name);
+		setCode(code);
+		setAddress(address);
+		setHistoric(historic);
+	}
+	public Student(String name, String code, Address address, Historic historic) {
+		setName(name);
+		setCode(code);
+		setAddress(address);
+		setHistoric(historic);
+	}
+
 	public String getName() {
         return name;
     }
@@ -45,23 +57,26 @@ public class Student {
 		return address;
 	}
 	
-	public void setAddress(String city, String state, String district, int number) {
-		if ((!city.isEmpty()) && (!state.isEmpty()) && (!district.isEmpty()) && (number > 0)){
-			this.address.setCity(city);
-			this.address.setState(state);
-			this.address.setDistrict(district);
-			this.address.setNumber(number);
-		}
+	public void setAddress(Address address) {
+		if (address != null)
+			this.address = address;
 	}
 	
-	public ArrayList<Historic> getHistoric() {
+	public Historic getHistoric() {
 		return this.historic;
 	}
 	
-	public void setHistoric (ArrayList<Historic> historic){
-		if(!historic.isEmpty()) {
+	public void setHistoric (Historic historic){
+		if(historic != null)
 			this.historic = historic;
-		}
+	}
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		if (id != null && id >= 0)
+			this.id = id;
 	}
 	
 	

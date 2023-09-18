@@ -3,66 +3,78 @@ package com.classmanager.model;
 import java.util.ArrayList;
 
 public class Teacher {
+	private Long id;
 	private String name;
 	private String cpf;
 	private Address address;
-	private ArrayList<Class> classes = new ArrayList(1);
-	
-	Teacher(String name, String cpf, Address address, ArrayList<Class> classes) {
-		this.name = name;
-		this.cpf = cpf;
-		this.address = address;
-		this.classes = classes;
+	private ArrayList<Class> classes;
+
+
+	public Teacher() {
 	}
-	
+
+	public Teacher(Long id, String name, String cpf, Address address, ArrayList<Class> classes) {
+		setId(id);
+		setName(name);
+		setCPF(cpf);
+		setAddress(address);
+		setClasses(classes);
+	}
+	public Teacher(String name, String cpf, Address address, ArrayList<Class> classes) {
+		setName(name);
+		setCPF(cpf);
+		setAddress(address);
+		setClasses(classes);
+	}
+
+
+
 	public String getName() {
         return name;
     }
-    
 	public void setName(String name) {
-        if (!name.isEmpty()) {
+        if (!name.isEmpty() && name != null) {
             this.name = name;
         }
         else {
         	this.name = "Sem nome";
         }
     }
-    
 	public String getCPF() {
         return cpf;
     }
-    
 	public void setCPF(String cpf) {
-        if (!cpf.isEmpty()) {
+        if (!cpf.isEmpty() && cpf != null) {
             this.cpf = cpf;
         }
         else {
         	this.cpf = "Sem CPF cadastrado";
         }
     }
-	
 	public Address getAddress() {
 		return address;
 	}
-	
-	public void setAddress(String city, String state, String district, int number) {
-		if ((!city.isEmpty()) && (!state.isEmpty()) && (!district.isEmpty()) && (number > 0)){
-			this.address.setCity(city);
-			this.address.setState(state);
-			this.address.setDistrict(district);
-			this.address.setNumber(number);
-		}
+	public void setAddress(Address address) {
+		if (address != null)
+			this.address = address;
 	}
-	
 	public ArrayList<Class> getClasses() {
 		return this.classes;
 	}
-	
 	public void setClasses(ArrayList<Class> classes){
-		if(!classes.isEmpty()) {
+		if(!classes.isEmpty() && classes != null)
 			this.classes = classes;
-		}
 	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		if (id != null && id >= 0)
+			this.id = id;
+	}
+
+
+
 	
 	public void register() {
 		//Registra professor no banco de dados.
