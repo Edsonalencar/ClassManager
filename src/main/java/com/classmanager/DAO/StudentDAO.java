@@ -20,7 +20,7 @@ public class StudentDAO extends BaseDAO {
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setString(1, student.getName());
             pstmt.setString(2, student.getCode());
-            pstmt.setInt(3, student.getAddress().getId());
+            pstmt.setLong(3, student.getAddress().getId());
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -34,8 +34,8 @@ public class StudentDAO extends BaseDAO {
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setString(1, student.getName());
             pstmt.setString(2, student.getCode());
-            pstmt.setInt(3, student.getAddress().getId());
-            pstmt.setInt(4, student.getId());
+            pstmt.setLong(3, student.getAddress().getId());
+            pstmt.setLong(4, student.getId());
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -43,12 +43,12 @@ public class StudentDAO extends BaseDAO {
         }
     }
 
-    public void addHistoric(int studentId, int historicId) {
+    public void addHistoric(Long studentId, Long historicId) {
         String sql = "INSERT INTO student_historic (student_id, historic_id) VALUES (?, ?)";
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setInt(1, studentId);
-            pstmt.setInt(2, historicId);
+            pstmt.setLong(1, studentId);
+            pstmt.setLong(2, historicId);
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -56,12 +56,12 @@ public class StudentDAO extends BaseDAO {
         }
     }
 
-    public void updateHistoric(int studentId, int historicId) {
+    public void updateHistoric(Long studentId, Long historicId) {
         String sql = "UPDATE student_historic SET historic_id = ? WHERE student_id = ?";
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setInt(1, historicId);
-            pstmt.setInt(2, studentId);
+            pstmt.setLong(1, historicId);
+            pstmt.setLong(2, studentId);
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -69,19 +69,19 @@ public class StudentDAO extends BaseDAO {
         }
     }
 
-    public Student findStudentByClass(int classId) {
+    public Student findStudentByClass(Long classId) {
         String sql = "SELECT s.* FROM student s " +
                 "INNER JOIN student_class sc ON s.id = sc.student_id " +
                 "WHERE sc.class_id = ?";
         Student student = null;
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setInt(1, classId);
+            pstmt.setLong(1, classId);
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
                 student = new Student();
-                student.setId(rs.getInt("id"));
+                student.setId(rs.getLong("id"));
                 student.setName(rs.getString("name"));
                 student.setCode(rs.getString("code"));
                 // Preencher o objeto Student com od outros atributos
@@ -104,7 +104,7 @@ public class StudentDAO extends BaseDAO {
 
             if (rs.next()) {
                 student = new Student();
-                student.setId(rs.getInt("id"));
+                student.setId(rs.getLong("id"));
                 student.setName(rs.getString("name"));
                 student.setCode(rs.getString("code"));
                 // Preencher o objeto Student com od outros atributos
@@ -116,17 +116,17 @@ public class StudentDAO extends BaseDAO {
         return student;
     }
 
-    public List<Class> findClassByDiscipline(int disciplineId) {
+    public List<Class> findClassByDiscipline(Long disciplineId) {
         List<Class> classes = new ArrayList<>();
         String sql = "SELECT c.* FROM class c WHERE c.discipline_id = ?";
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setInt(1, disciplineId);
+            pstmt.setLong(1, disciplineId);
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
                 Class aClass = new Class();
-                aClass.setId(rs.getInt("id"));
+                aClass.setId(rs.getLong("id"));
                 aClass.setDisciplineId(rs.getInt("discipline_id"));
                 // Preencher o objeto Student com od outros atributos
 

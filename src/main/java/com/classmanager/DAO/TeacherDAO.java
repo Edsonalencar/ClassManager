@@ -18,7 +18,7 @@ public class TeacherDAO extends BaseDAO {
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setString(1, teacher.getName());
             pstmt.setString(2, teacher.getCPF());
-            pstmt.setInt(3, teacher.getAddress().getId());
+            pstmt.setLong(3, teacher.getAddress().getId());
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -32,8 +32,8 @@ public class TeacherDAO extends BaseDAO {
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setString(1, teacher.getName());
             pstmt.setString(2, teacher.getCPF());
-            pstmt.setInt(3, teacher.getAddress().getId());
-            pstmt.setInt(4, teacher.getId());
+            pstmt.setLong(3, teacher.getAddress().getId());
+            pstmt.setLong(4, teacher.getId());
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -41,12 +41,12 @@ public class TeacherDAO extends BaseDAO {
         }
     }
 
-    public void registerClass(int teacherId, int classId) {
+    public void registerClass(Long teacherId, Long classId) {
         String sql = "INSERT INTO teacher_class (teacher_id, class_id) VALUES (?, ?)";
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setInt(1, teacherId);
-            pstmt.setInt(2, classId);
+            pstmt.setLong(1, teacherId);
+            pstmt.setLong(2, classId);
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -54,12 +54,12 @@ public class TeacherDAO extends BaseDAO {
         }
     }
 
-    public void deleteClass(int teacherId, int classId) {
+    public void deleteClass(Long teacherId, Long classId) {
         String sql = "DELETE FROM teacher_class WHERE teacher_id = ? AND class_id = ?";
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setInt(1, teacherId);
-            pstmt.setInt(2, classId);
+            pstmt.setLong(1, teacherId);
+            pstmt.setLong(2, classId);
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -67,22 +67,22 @@ public class TeacherDAO extends BaseDAO {
         }
     }
 
-    public Teacher findTeacherByClass(int classId) {
+    public Teacher findTeacherByClass(Long classId) {
         String sql = "SELECT t.* FROM teacher t " +
                 "INNER JOIN teacher_class tc ON t.id = tc.teacher_id " +
                 "WHERE tc.class_id = ?";
         Teacher teacher = null;
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setInt(1, classId);
+            pstmt.setLong(1, classId);
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
                 teacher = new Teacher();
-                teacher.setId(rs.getInt("id"));
+                teacher.setId(rs.getLong("id"));
                 teacher.setName(rs.getString("name"));
                 teacher.setCPF(rs.getString("cpf"));
-                // Preencher o objeto Teacher com od outros atributos
+                teacher.setClasses(rs.getArray("classes"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -101,7 +101,7 @@ public class TeacherDAO extends BaseDAO {
 
             if (rs.next()) {
                 teacher = new Teacher();
-                teacher.setId(rs.getInt("id"));
+                teacher.setId(rs.getLong("id"));
                 teacher.setName(rs.getString("name"));
                 teacher.setCPF(rs.getString("cpf"));
             }

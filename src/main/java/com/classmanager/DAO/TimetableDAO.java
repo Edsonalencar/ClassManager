@@ -30,7 +30,7 @@ public class TimetableDAO extends BaseDAO {
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setObject(1, timetable.getStart_time());
             pstmt.setObject(2, timetable.getEnd_time());
-            pstmt.setInt(3, timetable.getId());
+            pstmt.setLong(3, timetable.getId());
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -38,11 +38,11 @@ public class TimetableDAO extends BaseDAO {
         }
     }
 
-    public void delete(Timetable timetable) {
+    public void delete(Long id) {
         String sql = "DELETE FROM timetable WHERE id = ?";
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setInt(1, timetable.getId());
+            pstmt.setLong(1, id);
 
             pstmt.executeUpdate();
         } catch (SQLException e) {

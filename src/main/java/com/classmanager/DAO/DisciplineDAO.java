@@ -33,7 +33,7 @@ public class DisciplineDAO extends BaseDAO {
             pstmt.setString(1, discipline.getName());
             pstmt.setString(2, discipline.getCode());
             pstmt.setString(3, discipline.getStatus().toString());
-            pstmt.setInt(4, discipline.getId());
+            pstmt.setLong(4, discipline.getId());
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -41,11 +41,11 @@ public class DisciplineDAO extends BaseDAO {
         }
     }
 
-    public void delete(Discipline discipline) {
+    public void delete(Long id) {
         String sql = "DELETE FROM discipline WHERE id = ?";
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setInt(1, discipline.getId());
+            pstmt.setLong(1, id);
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -63,11 +63,10 @@ public class DisciplineDAO extends BaseDAO {
 
             if (rs.next()) {
                 discipline = new Discipline();
-                discipline.setId(rs.getInt("id"));
+                discipline.setId(rs.getLong("id"));
                 discipline.setName(rs.getString("name"));
                 discipline.setCode(rs.getString("code"));
-                discipline.setStatus(DisciplineStatus.valueOf(rs.getString("status")));
-                // Preencher o objeto Discipline com od outros atributos
+                discipline.setStatus(enums.DisciplineStatus.valueOf(rs.getString("status")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
