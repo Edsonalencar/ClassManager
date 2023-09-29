@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="TelaInicialGerente" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TelaInicial">
+   <children>
+      <TableView fx:id="TabelaTurmasHistóricoAluno" editable="true" layoutX="316.0" layoutY="242.0" prefHeight="336.0" prefWidth="470.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3871c1" height="33.0" stroke="BLACK" strokeType="INSIDE" width="840.0" AnchorPane.bottomAnchor="567.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Text fill="WHITE" layoutX="56.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Class Manager" wrappingWidth="127.13671875">
+         <font>
+            <Font name="Verdana" size="14.0" />
+         </font>
+      </Text>
+      <TextField fx:id="CampoBuscarNome" layoutX="315.0" layoutY="206.0" prefHeight="25.0" prefWidth="253.0" promptText="Buscar por nome" />
+      <Button fx:id="BotãoSair" layoutX="794.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: #3871C1;" text="Sair" textFill="WHITE" />
+      <Button fx:id="BotãoPerfil" layoutX="746.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: #3871C1;" text="Perfil" textFill="WHITE" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="35.0" layoutY="33.0" stroke="#f7f7f7" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" style="-fx-effect: dropshadow(gaussian,rgba(0,0,0,0.3),0.5,0.3,0,1);" width="840.0" AnchorPane.bottomAnchor="532.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0" />
+      <Button fx:id="BotãoVoltar" alignment="BOTTOM_LEFT" layoutX="44.0" layoutY="81.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: 0;" text="&lt;  Voltar" AnchorPane.bottomAnchor="494.0" AnchorPane.topAnchor="81.0">
+         <font>
+            <Font name="Verdana" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="BotãoInicioBarra" layoutX="50.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Início" textFill="#3871c1" />
+      <Button fx:id="BotãoProfessoresBarra" layoutX="99.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Professores" textFill="#3871c1" />
+      <Button fx:id="BotãoAlunosBarra" layoutX="181.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Alunos" textFill="#3871c1" />
+      <Button fx:id="BotãoTurmasBarra" layoutX="238.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Turmas" textFill="#3871c1" />
+      <Button fx:id="BotãoDisciplinasBarra" layoutX="298.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Disciplinas" textFill="#3871c1" />
+      <Line endX="-28.0" fill="#3871c1" layoutX="202.0" layoutY="70.0" startX="-100.0" stroke="#3871c1" strokeWidth="2.5" />
+      <TextField fx:id="CampoBuscarSemestre" layoutX="577.0" layoutY="206.0" prefHeight="25.0" prefWidth="208.0" promptText="Buscar por semestre" />
+      <Label fx:id="LabelNome" alignment="CENTER" layoutX="54.0" layoutY="374.0" prefHeight="17.0" prefWidth="200.0" text="Nome do Aluno">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="LabelCPF" alignment="CENTER" layoutX="54.0" layoutY="391.0" prefHeight="17.0" prefWidth="200.0" text="CPF">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="LabelEndereço" alignment="CENTER" layoutX="75.0" layoutY="408.0" prefHeight="46.0" prefWidth="157.0" text="Endereço" />
+      <Button fx:id="BotãoTurmasAbertas" alignment="CENTER" layoutX="336.0" layoutY="157.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="144.0" style="-fx-background-color: 0;" text="Turmas Abertas">
+         <font>
+            <Font name="Verdana" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="BotãoHistórico" alignment="CENTER" layoutX="498.0" layoutY="157.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="118.0" style="-fx-background-color: #dadada;" text="Histórico">
+         <font>
+            <Font name="Verdana" size="14.0" />
+         </font>
+      </Button>
+      <Label layoutX="61.0" layoutY="115.0" prefHeight="37.0" prefWidth="208.0" text="Perfil" textFill="#3871c1">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="BotãoEmitirHistórico" alignment="CENTER" layoutX="635.0" layoutY="157.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: 0; -fx-border-color: #00ADEF;" text="Emitir Histórico" textFill="#00adef">
+         <font>
+            <Font name="Verdana" size="14.0" />
+         </font>
+      </Button>
+      <Circle fx:id="Foto" fill="WHITE" layoutX="154.0" layoutY="262.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.1" />
+   </children>
+</AnchorPane>

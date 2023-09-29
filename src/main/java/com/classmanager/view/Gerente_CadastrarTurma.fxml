@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="TelaInicialGerente" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TelaInicial">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="466.0" layoutX="31.0" layoutY="114.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.2" style="-fx-effect: dropshadow(gaussian,rgba(0,0,0,0.5),.1,0.5,1.5,0.5);" width="763.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3871c1" height="33.0" stroke="BLACK" strokeType="INSIDE" width="840.0" AnchorPane.bottomAnchor="567.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Text fill="WHITE" layoutX="56.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Class Manager" wrappingWidth="127.13671875">
+         <font>
+            <Font name="Verdana" size="14.0" />
+         </font>
+      </Text>
+      <Button fx:id="BotãoSair" layoutX="794.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: #3871C1;" text="Sair" textFill="WHITE" />
+      <Button fx:id="BotãoPerfil" layoutX="746.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: #3871C1;" text="Perfil" textFill="WHITE" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="35.0" layoutY="33.0" stroke="#f7f7f7" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" style="-fx-effect: dropshadow(gaussian,rgba(0,0,0,0.3),0.5,0.3,0,1);" width="840.0" AnchorPane.bottomAnchor="532.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0" />
+      <Button fx:id="BotãoVoltar" alignment="BOTTOM_LEFT" layoutX="44.0" layoutY="81.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: 0;" text="&lt;  Voltar" AnchorPane.bottomAnchor="494.0" AnchorPane.topAnchor="81.0">
+         <font>
+            <Font name="Verdana" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="BotãoInicioBarra" layoutX="50.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Início" textFill="#3871c1" />
+      <Button fx:id="BotãoProfessoresBarra" layoutX="99.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Professores" textFill="#3871c1" />
+      <Button fx:id="BotãoAlunosBarra" layoutX="181.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Alunos" textFill="#3871c1" />
+      <Button fx:id="BotãoTurmasBarra" layoutX="238.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Turmas" textFill="#3871c1" />
+      <Button fx:id="BotãoDisciplinasBarra" layoutX="298.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Disciplinas" textFill="#3871c1" />
+      <Line endX="-56.0" fill="#3871c1" layoutX="344.0" layoutY="70.0" startX="-100.0" stroke="#3871c1" strokeWidth="2.5" />
+      <Label layoutX="55.0" layoutY="119.0" prefHeight="37.0" prefWidth="208.0" text="Cadastrar Turma" textFill="#3871c1">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="79.0" layoutY="145.0" prefHeight="37.0" prefWidth="208.0" text="Descrição" textFill="#3871c1">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="78.0" layoutY="177.0" prefHeight="27.0" prefWidth="135.0" text="Disciplina*:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="CampoHorarioInicio" layoutX="78.0" layoutY="262.0" prefHeight="25.0" prefWidth="158.0" />
+      <Label layoutX="78.0" layoutY="236.0" prefHeight="27.0" prefWidth="158.0" text="Horário de início*:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="79.0" layoutY="292.0" prefHeight="37.0" prefWidth="208.0" text="Participantes" textFill="#3871c1">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="ChoiceBoxParticipantes" layoutX="80.0" layoutY="334.0" prefHeight="25.0" prefWidth="552.0" />
+      <Button fx:id="BotãoSalvar" layoutX="613.0" layoutY="538.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: #00ADEF;" text="Salvar" textFill="#fafeff">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <ChoiceBox fx:id="ChoiceBoxDisciplina" layoutX="78.0" layoutY="204.0" prefHeight="25.0" prefWidth="158.0" />
+      <ChoiceBox fx:id="ChoiceBoxProfessor" layoutX="246.0" layoutY="204.0" prefHeight="25.0" prefWidth="327.0" />
+      <Label layoutX="246.0" layoutY="177.0" prefHeight="27.0" prefWidth="135.0" text="Professor*:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="CampoHorarioTermino" layoutX="245.0" layoutY="262.0" prefHeight="25.0" prefWidth="158.0" />
+      <Label layoutX="245.0" layoutY="236.0" prefHeight="27.0" prefWidth="158.0" text="Horário de término*:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="CampoBloco" layoutX="412.0" layoutY="262.0" prefHeight="25.0" prefWidth="160.0" />
+      <Label layoutX="412.0" layoutY="236.0" prefHeight="27.0" prefWidth="158.0" text="Bloco*:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="582.0" layoutY="177.0" prefHeight="27.0" prefWidth="135.0" text="Número de aulas*:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="CampoSala" layoutX="582.0" layoutY="262.0" prefHeight="25.0" prefWidth="158.0" />
+      <Label layoutX="582.0" layoutY="236.0" prefHeight="27.0" prefWidth="158.0" text="Sala*:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="CampoNumeroAulas" layoutX="583.0" layoutY="204.0" prefHeight="25.0" prefWidth="158.0" />
+      <Button fx:id="BotãoNovoParticipante" layoutX="642.0" layoutY="333.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" style="-fx-background-color: #00ADEF;" text="Novo+" textFill="#fafeff">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TableView fx:id="TabelaParticipantes" layoutX="81.0" layoutY="371.0" prefHeight="155.0" prefWidth="660.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
