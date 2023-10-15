@@ -1,13 +1,12 @@
 package com.classmanager.controller;
 
-import com.classmanager.View.Telas;
+import com.classmanager.view.Telas;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
-import java.net.URL;
 
 public class TelaLogin {
     @FXML private Label erro;
