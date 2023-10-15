@@ -1,7 +1,5 @@
 package com.classmanager.model;
 
-import java.util.ArrayList;
-
 public class Student {
 	private Long id;
 	private String name;

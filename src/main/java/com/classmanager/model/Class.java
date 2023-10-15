@@ -1,7 +1,8 @@
 package com.classmanager.model;
 
-import enums.ClassStatus;
 import java.util.ArrayList;
+
+import com.classmanager.enums.ClassStatus;
 
 public class Class {
     private Long id;

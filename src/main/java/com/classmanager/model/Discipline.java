@@ -1,6 +1,6 @@
 package com.classmanager.model;
 
-import enums.DisciplineStatus;
+import com.classmanager.enums.DisciplineStatus;
 
 public class Discipline {
     private Long id;
