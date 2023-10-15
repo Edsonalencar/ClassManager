@@ -93,7 +93,7 @@ public class Telas extends Application{
         primaryStage.setScene(cena);
     }
     public static void Gerente_TelaDisciplina() throws Exception{
-        Parent root = FXMLLoader.load(Telas.class.getResource("VE/Gerente_TelaDisciplina.fxml"));
+        Parent root = FXMLLoader.load(Telas.class.getResource("VE/Gerente_TelaDisciplinas.fxml"));
         Scene cena = new Scene(root);
         primaryStage.setScene(cena);
     }

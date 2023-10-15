@@ -19,7 +19,7 @@ public class TelaLogin {
         System.out.println("Senha: " + CampoSenha.getText());
 
         if(CampoUsuario.getText().equals("1")){
-            com.classmanager.view.Telas.Gerente_TelaInicial();
+            Telas.Gerente_TelaInicial();
         } else if (CampoUsuario.getText().equals("2")) {
             Telas.Professor_TelaInicial();
         }

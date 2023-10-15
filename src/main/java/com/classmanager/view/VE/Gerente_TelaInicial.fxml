@@ -28,7 +28,7 @@
         </columns>
       </TableView>
       <Button fx:id="BotãoAdicionar" layoutX="700.0" layoutY="147.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #00ADEF;" text="Adicionar" textFill="WHITE" />
-      <Button fx:id="BotãoSair" layoutX="794.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: #3871C1;" text="Sair" textFill="WHITE" />
+      <Button fx:id="BotãoSair" layoutX="794.0" layoutY="4.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #3871C1;" text="Sair" textFill="WHITE" />
       <Button fx:id="BotãoPerfil" layoutX="746.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: #3871C1;" text="Perfil" textFill="WHITE" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="35.0" layoutY="33.0" stroke="#f7f7f7" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" style="-fx-effect: dropshadow(gaussian,rgba(0,0,0,0.3),0.5,0.3,0,1);" width="840.0" AnchorPane.bottomAnchor="532.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0" />
       <Button fx:id="BotãoProfessores" alignment="BOTTOM_CENTER" layoutX="54.0" layoutY="85.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="164.0" style="-fx-background-color: #3871C1;" text="Professores" textFill="WHITE" AnchorPane.bottomAnchor="468.0" AnchorPane.topAnchor="85.0">
@@ -52,10 +52,10 @@
          </font>
       </Label>
       <Button fx:id="BotãoInicioBarra" layoutX="50.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Início" textFill="#3871c1" />
-      <Button fx:id="BotãoProfessoresBarra" layoutX="99.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Professores" textFill="#3871c1" />
-      <Button fx:id="BotãoAlunosBarra" layoutX="181.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Alunos" textFill="#3871c1" />
-      <Button fx:id="BotãoTurmasBarra" layoutX="238.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Turmas" textFill="#3871c1" />
-      <Button fx:id="BotãoDisciplinasBarra" layoutX="298.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Disciplinas" textFill="#3871c1" />
+      <Button fx:id="BotãoProfessoresBarra" layoutX="99.0" layoutY="39.0" mnemonicParsing="false" onAction="#telaProfessor" style="-fx-background-color: #f8f8f8;" text="Professores" textFill="#3871c1" />
+      <Button fx:id="BotãoAlunosBarra" layoutX="181.0" layoutY="39.0" mnemonicParsing="false" onAction="#telaAluno" style="-fx-background-color: #f8f8f8;" text="Alunos" textFill="#3871c1" />
+      <Button fx:id="BotãoTurmasBarra" layoutX="238.0" layoutY="39.0" mnemonicParsing="false" onAction="#telaTurma" style="-fx-background-color: #f8f8f8;" text="Turmas" textFill="#3871c1" />
+      <Button fx:id="BotãoDisciplinasBarra" layoutX="298.0" layoutY="39.0" mnemonicParsing="false" onAction="#telaDisciplina" style="-fx-background-color: #f8f8f8;" text="Disciplinas" textFill="#3871c1" />
       <Line endX="-65.0" fill="#3871c1" layoutX="155.0" layoutY="70.0" startX="-100.0" stroke="#3871c1" strokeWidth="2.5" />
       <Button fx:id="BotãoTurmas" alignment="BOTTOM_CENTER" layoutX="432.0" layoutY="85.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="164.0" style="-fx-background-color: #f7f7f7; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.3),1,2,1, 1);" text="Turmas">
          <font>
