@@ -125,12 +125,12 @@ public class StudentDAO extends BaseDAO {
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                Class aClass = new Class();
-                aClass.setId(rs.getLong("id"));
-                aClass.setDisciplineId(rs.getInt("discipline_id"));
+                //Class aClass = new Class();
+                //aClass.setId(rs.getLong("id"));
+                //aClass.setDisciplineId(rs.getInt("discipline_id"));
                 // Preencher o objeto Student com od outros atributos
 
-                classes.add(aClass);
+                //classes.add(aClass);
             }
         } catch (SQLException e) {
             e.printStackTrace();

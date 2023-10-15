@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="TelaInicialGerente" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.classmanager.controller.Gerente_TelaInicial">
+<AnchorPane fx:id="TelaInicialGerente" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.classmanager.controller.TelaLogin">
    <children>
       <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#3871c1" height="515.0" layoutX="201.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" width="457.0" />
       <ImageView fx:id="Logo" fitHeight="150.0" fitWidth="200.0" layoutX="355.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
@@ -34,7 +34,7 @@
       </Label>
       <TextField fx:id="CampoUsuario" layoutX="263.0" layoutY="314.0" prefHeight="32.0" prefWidth="337.0" />
       <TextField fx:id="CampoSenha" layoutX="263.0" layoutY="375.0" prefHeight="32.0" prefWidth="337.0" />
-      <Button fx:id="BotãoEntrar" layoutX="263.0" layoutY="455.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="337.0" style="-fx-background-color: #00ADEF;" text="Entrar" textFill="WHITE">
+      <Button fx:id="BotãoEntrar" layoutX="263.0" layoutY="455.0" mnemonicParsing="false" onAction="#autenticar" prefHeight="37.0" prefWidth="337.0" style="-fx-background-color: #00ADEF;" text="Entrar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Button>

@@ -81,7 +81,7 @@ public class TeacherDAO extends BaseDAO {
                 teacher.setId(rs.getLong("id"));
                 teacher.setName(rs.getString("name"));
                 teacher.setCPF(rs.getString("cpf"));
-                teacher.setClasses(rs.getArray("classes"));
+                //teacher.setClasses(rs.getArray("classes"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
