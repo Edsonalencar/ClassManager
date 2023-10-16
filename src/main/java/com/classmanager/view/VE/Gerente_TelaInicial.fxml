@@ -29,7 +29,6 @@
       </TableView>
       <Button fx:id="BotãoAdicionar" layoutX="700.0" layoutY="147.0" mnemonicParsing="false" onAction="#addAluno" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #00ADEF;" text="Adicionar" textFill="WHITE" />
       <Button fx:id="BotãoSair" layoutX="794.0" layoutY="4.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #3871C1;" text="Sair" textFill="WHITE" />
-      <Button fx:id="BotãoPerfil" layoutX="746.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: #3871C1;" text="Perfil" textFill="WHITE" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="35.0" layoutY="33.0" stroke="#f7f7f7" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" style="-fx-effect: dropshadow(gaussian,rgba(0,0,0,0.3),0.5,0.3,0,1);" width="840.0" AnchorPane.bottomAnchor="532.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0" />
       <Button fx:id="BotãoProfessores" alignment="BOTTOM_CENTER" layoutX="54.0" layoutY="85.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="164.0" style="-fx-background-color: #3871C1;" text="Professores" textFill="WHITE" AnchorPane.bottomAnchor="468.0" AnchorPane.topAnchor="85.0">
          <font>
@@ -67,7 +66,7 @@
             <Font name="Verdana" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="BotãoDisciplinas" alignment="BOTTOM_CENTER" layoutX="621.0" layoutY="85.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="164.0" style="-fx-background-color: #f7f7f7; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.3),1,2,1, 1);" text="Discinplinas">
+      <Button fx:id="BotãoDisciplinas" alignment="BOTTOM_CENTER" layoutX="621.0" layoutY="85.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="164.0" style="-fx-background-color: #f7f7f7; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.3),1,2,1, 1);" text="Disciplinas">
          <font>
             <Font name="Verdana" size="12.0" />
          </font>

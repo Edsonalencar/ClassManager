@@ -46,9 +46,6 @@
             <version>11</version>
         </dependency>
     </dependencies>
-    <configuration>
-        <executable>C:\path\to\jdk-12.0.2\bin\java</executable>
-    </configuration>
     <build>
         <plugins>
             <plugin>
