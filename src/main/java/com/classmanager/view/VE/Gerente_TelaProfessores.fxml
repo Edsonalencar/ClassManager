@@ -27,7 +27,6 @@
       </TableView>
       <Button fx:id="BotãoAdicionar" layoutX="700.0" layoutY="151.0" mnemonicParsing="false" onAction="#addProf" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #00ADEF;" text="Adicionar" textFill="WHITE" />
       <Button fx:id="BotãoSair" layoutX="794.0" layoutY="4.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #3871C1;" text="Sair" textFill="WHITE" />
-      <Button fx:id="BotãoPerfil" layoutX="746.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: #3871C1;" text="Perfil" textFill="WHITE" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="35.0" layoutY="33.0" stroke="#f7f7f7" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" style="-fx-effect: dropshadow(gaussian,rgba(0,0,0,0.3),0.5,0.3,0,1);" width="840.0" AnchorPane.bottomAnchor="532.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0" />
       <Button fx:id="BotãoVoltar" alignment="BOTTOM_LEFT" layoutX="44.0" layoutY="81.0" mnemonicParsing="false" onAction="#telaInicio" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: 0;" text="&lt;  Voltar" AnchorPane.bottomAnchor="494.0" AnchorPane.topAnchor="81.0">
          <font>
