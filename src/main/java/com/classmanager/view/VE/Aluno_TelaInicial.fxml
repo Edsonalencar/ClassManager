@@ -30,11 +30,11 @@
          </font>
       </Text>
       <TextField fx:id="CampoBuscarNome" layoutX="315.0" layoutY="165.0" prefHeight="25.0" prefWidth="470.0" promptText="Buscar por nome" />
-      <Button fx:id="BotãoSair" layoutX="794.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: #3871C1;" text="Sair" textFill="WHITE" />
-      <Button fx:id="BotãoPerfil" layoutX="746.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: #3871C1;" text="Perfil" textFill="WHITE" />
+      <Button fx:id="BotãoSair" layoutX="794.0" layoutY="4.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #3871C1;" text="Sair" textFill="WHITE" />
+      <Button fx:id="BotãoPerfil" layoutX="746.0" layoutY="4.0" mnemonicParsing="false" onAction="#perfil" style="-fx-background-color: #3871C1;" text="Perfil" textFill="WHITE" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="35.0" layoutY="33.0" stroke="#f7f7f7" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" style="-fx-effect: dropshadow(gaussian,rgba(0,0,0,0.3),0.5,0.3,0,1);" width="840.0" AnchorPane.bottomAnchor="532.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0" />
       <Button fx:id="BotãoInicioBarra" layoutX="50.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Início" textFill="#3871c1" />
-      <Button fx:id="BotãoTurmasBarra" layoutX="105.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Turmas" textFill="#3871c1" />
+      <Button fx:id="BotãoTurmasBarra" layoutX="105.0" layoutY="39.0" mnemonicParsing="false" onAction="#telaTurma" style="-fx-background-color: #f8f8f8;" text="Turmas" textFill="#3871c1" />
       <Line endX="-71.0" fill="#3871c1" layoutX="158.0" layoutY="70.0" startX="-100.0" stroke="#3871c1" strokeWidth="2.5" />
       <Label fx:id="LabelNome" alignment="CENTER" layoutX="78.0" layoutY="374.0" prefHeight="17.0" prefWidth="200.0" text="Nome do aluno">
          <font>
@@ -57,7 +57,7 @@
             <Image url="@pencil.png" />
          </image>
       </ImageView>
-      <Button fx:id="BotãoEditar" layoutX="269.0" layoutY="142.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: 0;" />
+      <Button fx:id="BotãoEditar" layoutX="269.0" layoutY="142.0" mnemonicParsing="false" onAction="#perfil" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: 0;" />
       <Circle fx:id="Foto" fill="WHITE" layoutX="177.0" layoutY="271.0" radius="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.1" />
    </children>
 </AnchorPane>

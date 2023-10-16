@@ -23,5 +23,8 @@ public class Gerente_TelaAlunos {
 	public void logout(ActionEvent event) throws Exception {
 		Telas.telaLogin();
 	}
+	public void addAluno(ActionEvent event) throws Exception {
+		Telas.Gerente_CadastrarAluno();
+	}
 
 }

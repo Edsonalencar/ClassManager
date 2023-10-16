@@ -23,5 +23,8 @@ public class Gerente_TelaTurmas {
 	public void logout(ActionEvent event) throws Exception {
 		Telas.telaLogin();
 	}
+	public void addTurma(ActionEvent event) throws Exception {
+		Telas.Gerente_CadastrarTurma();
+	}
 
 }

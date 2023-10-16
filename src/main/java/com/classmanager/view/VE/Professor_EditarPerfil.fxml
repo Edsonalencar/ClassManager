@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="TelaInicialGerente" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TelaInicial">
+<AnchorPane fx:id="TelaInicialGerente" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.classmanager.controller.Professor_EditarPerfil">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="466.0" layoutX="38.0" layoutY="110.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.2" style="-fx-effect: dropshadow(gaussian,rgba(0,0,0,0.5),.1,0.5,1.5,0.5);" width="763.0" />
       <TextField fx:id="CampoBairro" layoutX="569.0" layoutY="476.0" prefHeight="25.0" prefWidth="208.0" />
@@ -22,16 +22,16 @@
          </font>
       </Text>
       <TextField fx:id="CampoNome" layoutX="285.0" layoutY="209.0" prefHeight="25.0" prefWidth="327.0" />
-      <Button fx:id="BotãoSair" layoutX="794.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: #3871C1;" text="Sair" textFill="WHITE" />
+      <Button fx:id="BotãoSair" layoutX="794.0" layoutY="4.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #3871C1;" text="Sair" textFill="WHITE" />
       <Button fx:id="BotãoPerfil" layoutX="746.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: #3871C1;" text="Perfil" textFill="WHITE" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="35.0" layoutY="33.0" stroke="#f7f7f7" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" style="-fx-effect: dropshadow(gaussian,rgba(0,0,0,0.3),0.5,0.3,0,1);" width="840.0" AnchorPane.bottomAnchor="532.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0" />
-      <Button fx:id="BotãoVoltar" alignment="BOTTOM_LEFT" layoutX="44.0" layoutY="81.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: 0;" text="&lt;  Voltar" AnchorPane.bottomAnchor="494.0" AnchorPane.topAnchor="81.0">
+      <Button fx:id="BotãoVoltar" alignment="BOTTOM_LEFT" layoutX="44.0" layoutY="81.0" mnemonicParsing="false" onAction="#telaInicio" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: 0;" text="&lt;  Voltar" AnchorPane.bottomAnchor="494.0" AnchorPane.topAnchor="81.0">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="BotãoInicioBarra" layoutX="50.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Início" textFill="#3871c1" />
-      <Button fx:id="BotãoTurmasBarra" layoutX="105.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Turmas" textFill="#3871c1" />
+      <Button fx:id="BotãoInicioBarra" layoutX="50.0" layoutY="39.0" mnemonicParsing="false" onAction="#telaInicio" style="-fx-background-color: #f8f8f8;" text="Início" textFill="#3871c1" />
+      <Button fx:id="BotãoTurmasBarra" layoutX="105.0" layoutY="39.0" mnemonicParsing="false" onAction="#telaTurma" style="-fx-background-color: #f8f8f8;" text="Turmas" textFill="#3871c1" />
       <Line endX="-53.0" fill="#3871c1" layoutX="209.0" layoutY="70.0" startX="-100.0" stroke="#3871c1" strokeWidth="2.5" />
       <Label layoutX="61.0" layoutY="115.0" prefHeight="37.0" prefWidth="208.0" text="Perfil" textFill="#3871c1">
          <font>
@@ -107,7 +107,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="BotãoSalvar" layoutX="649.0" layoutY="523.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: #00ADEF;" text="Salvar Alterações" textFill="#fafeff">
+      <Button fx:id="BotãoSalvar" layoutX="649.0" layoutY="523.0" mnemonicParsing="false" onAction="#autenticar" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: #00ADEF;" text="Salvar Alterações" textFill="#fafeff">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>

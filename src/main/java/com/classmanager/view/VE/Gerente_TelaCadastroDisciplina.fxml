@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="TelaInicialGerente" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TelaInicial">
+<AnchorPane fx:id="TelaInicialGerente" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.classmanager.controller.Gerente_TelaCadastroDisciplina">
    <children>
       <Label layoutX="28.0" layoutY="17.0" prefHeight="20.0" prefWidth="146.0" text="Cadastrar Disciplina">
          <font>
@@ -21,7 +21,7 @@
       <TextField fx:id="CampoNomeDisciplina" layoutX="21.0" layoutY="113.0" prefHeight="25.0" prefWidth="322.0" />
       <ChoiceBox layoutX="-150.0" layoutY="52.0" prefWidth="150.0" />
       <ChoiceBox fx:id="ChoiceBoxStatus" layoutX="354.0" layoutY="113.0" prefHeight="25.0" prefWidth="88.0" />
-      <Button fx:id="BotãoSalvar" layoutX="368.0" layoutY="205.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="73.0" style="-fx-background-color: #00ADEF;" text="Salvar" textFill="WHITE" />
-      <Button fx:id="BotãoCancelar" layoutX="281.0" layoutY="205.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" style="-fx-border-color: #00ADEF; -fx-background-color: 0;" text="Cancelar" textFill="#00adef" />
+      <Button fx:id="BotãoSalvar" layoutX="368.0" layoutY="205.0" mnemonicParsing="false" onAction="#autenticar" prefHeight="26.0" prefWidth="73.0" style="-fx-background-color: #00ADEF;" text="Salvar" textFill="WHITE" />
+      <Button fx:id="BotãoCancelar" layoutX="281.0" layoutY="205.0" mnemonicParsing="false" onAction="#telaDisciplina" prefHeight="25.0" prefWidth="73.0" style="-fx-border-color: #00ADEF; -fx-background-color: 0;" text="Cancelar" textFill="#00adef" />
    </children>
 </AnchorPane>
