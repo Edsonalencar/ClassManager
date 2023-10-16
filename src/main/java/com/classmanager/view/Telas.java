@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 public class Telas extends Application{
 
+    //Comentário commit
     private static Stage primaryStage;
 
     public static Stage getPrimaryStage() {
