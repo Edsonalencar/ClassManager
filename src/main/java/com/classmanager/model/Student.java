@@ -5,24 +5,21 @@ public class Student {
 	private String name;
 	private String code;
 	private Address address;
-	private Historic historic;
 
 
 	public Student() {
 	}
 
-	public Student(Long id, String name, String code, Address address, Historic historic) {
+	public Student(Long id, String name, String code, Address address) {
 		setId(id);
 		setName(name);
 		setCode(code);
 		setAddress(address);
-		setHistoric(historic);
 	}
-	public Student(String name, String code, Address address, Historic historic) {
+	public Student(String name, String code, Address address) {
 		setName(name);
 		setCode(code);
 		setAddress(address);
-		setHistoric(historic);
 	}
 
 	public String getName() {
@@ -59,15 +56,7 @@ public class Student {
 		if (address != null)
 			this.address = address;
 	}
-	
-	public Historic getHistoric() {
-		return this.historic;
-	}
-	
-	public void setHistoric (Historic historic){
-		if(historic != null)
-			this.historic = historic;
-	}
+
 	public Long getId() {
 		return id;
 	}
@@ -113,7 +102,6 @@ public class Student {
 				", name='" + name + '\'' +
 				", code='" + code + '\'' +
 				", address=" + address +
-				", historic=" + historic +
 				'}';
 	}
 }
