@@ -2,6 +2,7 @@ package com.classmanager;
 
 import com.classmanager.DAO.BaseDAO;
 import com.classmanager.DAO.DisciplineDAO;
+import com.classmanager.enums.DisciplineStatus;
 import com.classmanager.model.Discipline;
 
 import java.sql.Connection;
@@ -16,7 +17,7 @@ public class ComandsTester {
 
         DisciplineDAO dsDao = new DisciplineDAO();
 
-        List<Discipline> listDs = dsDao.getAll();
+        List<Discipline> listDs = dsDao.getByCode("20231008");
         System.out.println(listDs);
     }
 }

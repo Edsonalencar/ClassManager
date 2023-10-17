@@ -43,32 +43,6 @@ public class StudentDAO extends BaseDAO {
         }
     }
 
-    public void addHistoric(Long studentId, Long historicId) {
-        String sql = "INSERT INTO student_historic (student_id, historic_id) VALUES (?, ?)";
-
-        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setLong(1, studentId);
-            pstmt.setLong(2, historicId);
-
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void updateHistoric(Long studentId, Long historicId) {
-        String sql = "UPDATE student_historic SET historic_id = ? WHERE student_id = ?";
-
-        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setLong(1, historicId);
-            pstmt.setLong(2, studentId);
-
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     public Student findStudentByClass(Long classId) {
         String sql = "SELECT s.* FROM student s " +
                 "INNER JOIN student_class sc ON s.id = sc.student_id " +

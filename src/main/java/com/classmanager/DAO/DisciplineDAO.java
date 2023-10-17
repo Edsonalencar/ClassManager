@@ -57,26 +57,76 @@ public class DisciplineDAO extends BaseDAO {
         }
     }
 
-    public Discipline get(String name) {
-        String sql = "SELECT * FROM discipline WHERE name = ?;";
-        Discipline discipline = null;
+    public List<Discipline>  getByName(String name) {
+        String sql = "SELECT * FROM discipline WHERE name LIKE ?;";
+        List<Discipline> disciplines = new ArrayList<>();
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setString(1, name);
+            pstmt.setString(1,  "%" + name + "%");
             ResultSet rs = pstmt.executeQuery();
 
-            if (rs.next()) {
-                discipline = new Discipline();
+            while (rs.next()) {
+                Discipline discipline = new Discipline();
                 discipline.setId(rs.getLong("id"));
                 discipline.setName(rs.getString("name"));
                 discipline.setCode(rs.getString("code"));
                 discipline.setStatus(DisciplineStatus.valueOf(rs.getString("status")));
+
+                disciplines.add(discipline);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return discipline;
+        return disciplines;
+    }
+
+    public List<Discipline>  getByStatus(DisciplineStatus status) {
+        String sql = "SELECT * FROM discipline WHERE status = ?;";
+        List<Discipline> disciplines = new ArrayList<>();
+
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setString(1,  status.toString());
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Discipline discipline = new Discipline();
+                discipline.setId(rs.getLong("id"));
+                discipline.setName(rs.getString("name"));
+                discipline.setCode(rs.getString("code"));
+                discipline.setStatus(DisciplineStatus.valueOf(rs.getString("status")));
+
+                disciplines.add(discipline);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return disciplines;
+    }
+
+    public List<Discipline>  getByCode(String code) {
+        String sql = "SELECT * FROM discipline WHERE code LIKE ?;";
+        List<Discipline> disciplines = new ArrayList<>();
+
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setString(1,  "%" + code + "%");
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Discipline discipline = new Discipline();
+                discipline.setId(rs.getLong("id"));
+                discipline.setName(rs.getString("name"));
+                discipline.setCode(rs.getString("code"));
+                discipline.setStatus(DisciplineStatus.valueOf(rs.getString("status")));
+
+                disciplines.add(discipline);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return disciplines;
     }
 
     public  List<Discipline> getAll() {
