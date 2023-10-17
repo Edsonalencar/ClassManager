@@ -17,11 +17,13 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
+import static java.lang.System.out;
+
 public class Gerente_TelaDisciplinas implements Initializable {
 	
 	@FXML
 	private RadioButton BotãoRadioAtiva, BotãoRadioInativa;
-	private ObservableList<Discipline> dados = null;
+	private List<Discipline> dados = null;
     private TableView<Discipline> TabelaDisciplinas;
 	
     
@@ -29,12 +31,17 @@ public class Gerente_TelaDisciplinas implements Initializable {
 	@Override
 	public  void initialize(URL url, ResourceBundle resourcebundle) {
 		DisciplineDAO daoDados = new DisciplineDAO();
-	    dados = (ObservableList<Discipline>) daoDados.getAll();
+	    dados = daoDados.getAll();
+		for(Discipline d : dados ) {
+			out.println(d.getName());
+			out.println(d.getCode());
+
+		}
 	    try{
-	    	TabelaDisciplinas.setItems(dados);
+	    	TabelaDisciplinas.setItems((ObservableList<Discipline>) dados);
 	    }catch(Exception e){
 	        e.printStackTrace();
-	        System.out.println("Error on Building Data");             
+	        out.println("Error on Building Data");
 	    }
 	}
 	
