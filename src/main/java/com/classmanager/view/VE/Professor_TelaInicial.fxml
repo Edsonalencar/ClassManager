@@ -18,9 +18,13 @@
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="421.0" layoutX="54.0" layoutY="137.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.2" width="245.0" />
       <TableView fx:id="TabelaTurmasHistoricoProfessor" editable="true" layoutX="316.0" layoutY="202.0" prefHeight="356.0" prefWidth="470.0">
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+            <TableColumn fx:id="ColunaIDTurma" text="Id Turma"/>
+            <TableColumn fx:id="ColunaDisciplina" text="Disciplina"/>
+            <TableColumn fx:id="ColunaHorário" text="Horário"/>
         </columns>
       </TableView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3871c1" height="33.0" stroke="BLACK" strokeType="INSIDE" width="840.0" AnchorPane.bottomAnchor="567.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />

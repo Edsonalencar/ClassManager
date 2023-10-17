@@ -22,9 +22,14 @@
       <TextField fx:id="CampoBuscar" layoutX="54.0" layoutY="148.0" prefHeight="25.0" prefWidth="375.0" promptText="Buscar" />
       <TextField fx:id="CampoSelecionarProfessor" layoutX="445.0" layoutY="148.0" prefHeight="25.0" prefWidth="238.0" promptText="Selecionar Professor" />
       <TableView fx:id="TabelaItens" layoutX="54.0" layoutY="186.0" prefHeight="392.0" prefWidth="732.0">
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+            <TableColumn fx:id="ColunaTurma" text="ID Turma"/>
+            <TableColumn fx:id="ColunaDisciplina" text="Disciplina"/>
+            <TableColumn fx:id="ColunaProfessor" text="Professor"/>
+            <TableColumn fx:id="ColunaAulas" text="Aulas"/>
         </columns>
       </TableView>
       <Button fx:id="BotãoAdicionar" layoutX="700.0" layoutY="147.0" mnemonicParsing="false" onAction="#addAluno" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #00ADEF;" text="Adicionar" textFill="WHITE" />

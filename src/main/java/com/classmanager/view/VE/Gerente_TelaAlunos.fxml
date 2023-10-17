@@ -21,9 +21,12 @@
       </Text>
       <TextField fx:id="CampoBuscar" layoutX="54.0" layoutY="152.0" prefHeight="25.0" prefWidth="372.0" promptText="Buscar" />
       <TableView fx:id="TabelaAlunos" editable="true" layoutX="54.0" layoutY="188.0" prefHeight="390.0" prefWidth="732.0">
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+            <TableColumn fx:id="ColunaNome" prefWidth="50.0" text="Nome"/>
+            <TableColumn fx:id="ColunaMatricula" prefWidth="50.0" text="Matrícula"/>
         </columns>
       </TableView>
       <Button fx:id="BotãoAdicionar" layoutX="700.0" layoutY="151.0" mnemonicParsing="false" onAction="#addAluno" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #00ADEF;" text="Adicionar" textFill="WHITE" />
