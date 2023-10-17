@@ -80,4 +80,15 @@ public class Address {
         if (id != null && id >= 0)
             this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", district='" + district + '\'' +
+                ", number=" + number +
+                '}';
+    }
 }

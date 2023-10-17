@@ -105,4 +105,15 @@ public class Student {
 	public void findClassByDiscipline() {
 		//Procura classe por disciplina no banco de dados.
 	}
+
+	@Override
+	public String toString() {
+		return "Student{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", code='" + code + '\'' +
+				", address=" + address +
+				", historic=" + historic +
+				'}';
+	}
 }

@@ -99,5 +99,16 @@ public class Teacher {
 	public void findTeacherByName() {
 		//Procura professor por seu nome no banco de dados.
 	}
-	
+
+
+	@Override
+	public String toString() {
+		return "Teacher{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", cpf='" + cpf + '\'' +
+				", address=" + address +
+				", classes=" + classes +
+				'}';
+	}
 }

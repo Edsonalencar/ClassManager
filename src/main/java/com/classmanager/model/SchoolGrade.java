@@ -44,4 +44,13 @@ public abstract class SchoolGrade {
 	public void update(SchoolGrade Sg) {
 		// Atualiza 
 	}
+
+	@Override
+	public String toString() {
+		return "SchoolGrade{" +
+				"id=" + id +
+				", period='" + period + '\'' +
+				", grade=" + grade +
+				'}';
+	}
 }

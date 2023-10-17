@@ -66,4 +66,14 @@ public class Discipline {
     public  void findDisciplineByName(String name) {
         //Busca disciplina por nome no Banco de Dados
     }
+
+    @Override
+    public String toString() {
+        return "Discipline{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", code='" + code + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

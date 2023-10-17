@@ -119,4 +119,18 @@ public class Class {
     public void  findClassByDiscipline(){
         //Busca classe por disciplina no Banco de Dados
     }
+
+    @Override
+    public String toString() {
+        return "Class{" +
+                "id=" + id +
+                ", discipline=" + discipline +
+                ", timetable=" + timetable +
+                ", local='" + local + '\'' +
+                ", period='" + period + '\'' +
+                ", status=" + status +
+                ", students=" + students +
+                ", teachers=" + teachers +
+                '}';
+    }
 }

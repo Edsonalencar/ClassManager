@@ -1,5 +1,7 @@
 package com.classmanager.DAO;
 
+import com.classmanager.enums.DisciplineStatus;
+import com.classmanager.model.Class;
 import com.classmanager.model.Discipline;
 
 import java.sql.Connection;
@@ -8,13 +10,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DisciplineDAO extends BaseDAO {
     private Connection con = getConection();
 
     public void register(Discipline discipline) {
-        String sql = "INSERT INTO discipline (name, code, status) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO discipline (name, code, status) VALUES (?, ?, ?);";
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setString(1, discipline.getName());
@@ -28,7 +31,7 @@ public class DisciplineDAO extends BaseDAO {
     }
 
     public void update(Discipline discipline) {
-        String sql = "UPDATE discipline SET name = ?, code = ?, status = ? WHERE id = ?";
+        String sql = "UPDATE discipline SET name = ?, code = ?, status = ? WHERE id = ?;";
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setString(1, discipline.getName());
@@ -43,7 +46,7 @@ public class DisciplineDAO extends BaseDAO {
     }
 
     public void delete(Long id) {
-        String sql = "DELETE FROM discipline WHERE id = ?";
+        String sql = "DELETE FROM discipline WHERE id = ?;";
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setLong(1, id);
@@ -55,7 +58,7 @@ public class DisciplineDAO extends BaseDAO {
     }
 
     public Discipline get(String name) {
-        String sql = "SELECT * FROM discipline WHERE name = ?";
+        String sql = "SELECT * FROM discipline WHERE name = ?;";
         Discipline discipline = null;
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
@@ -67,7 +70,7 @@ public class DisciplineDAO extends BaseDAO {
                 discipline.setId(rs.getLong("id"));
                 discipline.setName(rs.getString("name"));
                 discipline.setCode(rs.getString("code"));
-                //discipline.setStatus(enums.DisciplineStatus.valueOf(rs.getString("status")));
+                discipline.setStatus(DisciplineStatus.valueOf(rs.getString("status")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -76,19 +79,28 @@ public class DisciplineDAO extends BaseDAO {
         return discipline;
     }
 
-    public void getAll() {
-        String sql = "SELECT * FROM discipline";
-        Discipline discipline = null;
+    public  List<Discipline> getAll() {
+        String sql = "SELECT * FROM discipline;";
+        List<Discipline> disciplines = new ArrayList<>();
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             ResultSet rs = pstmt.executeQuery();
 
-            if (rs.next()) {
-                System.out.println(rs);
+            while (rs.next()) {
+                Discipline discipline = new Discipline();
+                discipline.setId(rs.getLong("id"));
+                discipline.setName(rs.getString("name"));
+                discipline.setCode(rs.getString("code"));
+                discipline.setStatus(DisciplineStatus.valueOf(rs.getString("status")));
+
+                disciplines.add(discipline);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return disciplines;
     }
 }
 

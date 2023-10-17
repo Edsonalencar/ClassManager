@@ -55,4 +55,13 @@ public class Timetable {
     public  void delete(Timetable Tb) {
         //Delete no Banco de Dados
     }
+
+    @Override
+    public String toString() {
+        return "Timetable{" +
+                "id=" + id +
+                ", start_time=" + start_time +
+                ", end_time=" + end_time +
+                '}';
+    }
 }

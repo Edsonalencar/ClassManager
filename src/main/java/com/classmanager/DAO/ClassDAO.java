@@ -24,7 +24,6 @@ public class ClassDAO extends BaseDAO {
 
             while (rs.next()) {
                 Class aClass = new Class();
-                // Preencher o objeto 'aClass' com os dados da consulta
 
                 classes.add(aClass);
             }

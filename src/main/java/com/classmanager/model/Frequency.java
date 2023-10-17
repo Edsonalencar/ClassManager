@@ -44,5 +44,13 @@ public abstract class Frequency {
 	public void update(Frequency Fr) {
 		// Atualiza
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Frequency{" +
+				"id=" + id +
+				", day=" + day +
+				", present=" + present +
+				'}';
+	}
 }

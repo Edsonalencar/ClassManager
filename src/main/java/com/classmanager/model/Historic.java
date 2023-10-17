@@ -84,4 +84,15 @@ public class Historic {
 	public void deleteSchoolGrade(SchoolGrade Sg) {
 		// Deleta 
 	}
+
+	@Override
+	public String toString() {
+		return "Historic{" +
+				"id=" + id +
+				", classe=" + classe +
+				", student=" + student +
+				", frequency=" + frequency +
+				", schoolGrade=" + schoolGrade +
+				'}';
+	}
 }
