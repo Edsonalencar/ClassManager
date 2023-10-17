@@ -11,7 +11,7 @@ public class TelaLogin {
     @FXML private Label LabelErro;
     @FXML private TextField CampoUsuario;
     @FXML private TextField CampoSenha;
-
+    
 
     public void autenticar(ActionEvent event) throws Exception{
         System.out.println("Chegou na tela de login!");
@@ -22,9 +22,11 @@ public class TelaLogin {
             Telas.Gerente_TelaInicial();
         } else if (CampoUsuario.getText().equals("2")) {
             Telas.Professor_TelaInicial();
+        } else if (CampoUsuario.getText().equals("3")) {
+            Telas.Aluno_TelaInicial();
         }
         else {
-            Telas.Aluno_TelaInicial();
+        	LabelErro.setVisible(true);
         }
     }
 }
