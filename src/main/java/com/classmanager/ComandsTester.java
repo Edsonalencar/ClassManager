@@ -5,7 +5,6 @@ import java.sql.Connection;
 
 public class ComandsTester {
     public static void main(String[] args) {
-
         BaseDAO baseDAO = new BaseDAO();
         Connection con = baseDAO.getConection();
 

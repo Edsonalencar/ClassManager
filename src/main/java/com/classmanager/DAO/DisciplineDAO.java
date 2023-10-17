@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class DisciplineDAO extends BaseDAO {
     private Connection con = getConection();
@@ -53,7 +54,7 @@ public class DisciplineDAO extends BaseDAO {
         }
     }
 
-    public Discipline findDisciplineByName(String name) {
+    public Discipline get(String name) {
         String sql = "SELECT * FROM discipline WHERE name = ?";
         Discipline discipline = null;
 
@@ -73,6 +74,21 @@ public class DisciplineDAO extends BaseDAO {
         }
 
         return discipline;
+    }
+
+    public void getAll() {
+        String sql = "SELECT * FROM discipline";
+        Discipline discipline = null;
+
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                System.out.println(rs);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
 
