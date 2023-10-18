@@ -19,10 +19,8 @@ import java.util.ResourceBundle;
 public class TelaLogin {
     @FXML private Label LabelErro;
     @FXML private TextField CampoUsuario;
-    @FXML private TextField CampoSenha;
-    private List<Usuario> usu;
+    @FXML private PasswordField CampoSenha;
 
-    
 
     public void autenticar(ActionEvent event) throws Exception{
         System.out.println("Chegou na tela de login!");
@@ -30,15 +28,19 @@ public class TelaLogin {
         System.out.println("Senha: " + CampoSenha.getText());
 
         UsuarioDAO usuario = new UsuarioDAO();
-        usu = usuario.buscar(CampoUsuario.getText(), CampoSenha.getText());
+        List<Usuario> usu;
+        usu = usuario.buscar();
+
 
         for (Usuario u : usu){
-            if(u.getLogin().equals("Diretor")){
-                Telas.Gerente_TelaInicial();
-            } else if (u.getLogin().equals("0000")) {
-                Telas.Professor_TelaInicial();
-            } else if (u.getLogin().equals("1111")) {
-                Telas.Aluno_TelaInicial();
+            if(CampoUsuario.getText().equals(u.getLogin()) && CampoSenha.getText().equals(u.getSenha())){
+                if(CampoUsuario.getText().equals("Diretor")){
+                    Telas.Gerente_TelaInicial();
+                } else if (CampoUsuario.getText().equals("0000")) {
+                    Telas.Professor_TelaInicial();
+                } else if (CampoUsuario.getText().equals("1111")) {
+                    Telas.Aluno_TelaInicial();
+                }
             }
             else {
                 LabelErro.setVisible(true);

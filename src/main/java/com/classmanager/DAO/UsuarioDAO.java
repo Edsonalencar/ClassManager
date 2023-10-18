@@ -48,32 +48,21 @@ public class UsuarioDAO extends BaseDAO{
         }
     }
 
-    public List<Usuario> buscar (String login, String senha) {
-        String sql = "SELECT senha FROM usuario WHERE login=?";
+    public List<Usuario> buscar () {
         List<Usuario> usuarios = new ArrayList<Usuario>();
+        String sql = "SELECT * FROM usuario";
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setString(1, login);
             ResultSet rs = pstmt.executeQuery();
-            if(!rs.isBeforeFirst()){
-                System.out.println("Usuario nao encontrado!");
-            }
-            else {
-                while (rs.next()) {
-                    String senhaD = rs.getString("senha");
-                    if(senhaD.equals(senha)) {
-                        System.out.println("Senha correta!");
-                        Usuario usuario = new Usuario();
-                        usuario.setLogin(rs.getString("login"));
-                        usuario.setSenha(rs.getString("senha"));
 
-                        usuarios.add(usuario);
-                    }
-                    else {
-                        System.out.println("Senha inválida!");
-                    }
-                }
+            while (rs.next()) {
+                Usuario u = new Usuario();
+                u.setLogin(rs.getString("login"));
+                u.setSenha(rs.getString("senha"));
+
+                usuarios.add(u);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
