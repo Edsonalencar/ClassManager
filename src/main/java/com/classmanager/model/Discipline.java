@@ -5,8 +5,8 @@ import com.classmanager.DAO.DisciplineDAO;
 
 public class Discipline {
     private Long id;
-    private  String name;
-    private  String code;
+    private String name;
+    private String code;
     private DisciplineStatus status;
 
 

@@ -9,40 +9,72 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import com.classmanager.DAO.DisciplineDAO;
+import com.classmanager.enums.DisciplineStatus;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.collections.*;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import static java.lang.System.out;
 
 public class Gerente_TelaDisciplinas implements Initializable {
 	
-	@FXML
-	private RadioButton BotãoRadioAtiva, BotãoRadioInativa;
-	private List<Discipline> dados = null;
-    private TableView<Discipline> TabelaDisciplinas;
-	
-    
-    
-	@Override
-	public void initialize(URL url, ResourceBundle resourcebundle) {
-		DisciplineDAO daoDados = new DisciplineDAO();
-	    dados = daoDados.getAll();
-		for(Discipline d : dados ) {
-			out.println(d.getName());
-			out.println(d.getCode());
+	public DisciplineDAO daoDados = new DisciplineDAO();
 
+	
+	@FXML 
+	private RadioButton BotãoRadioAtiva, BotãoRadioInativa;
+	@FXML 
+	private TableView<Discipline> TabelaDisciplinas;
+	@FXML 
+	private TableColumn<Discipline, Long> ColunaCodigoDisciplina;
+	@FXML 
+	private TableColumn<Discipline, String> ColunaTítulo;
+	@FXML 
+	private TableColumn<Discipline, DisciplineStatus> ColunaStatus;
+    
+	ObservableList<Discipline> lista = FXCollections.observableArrayList();
+	ObservableList<Discipline> todos = FXCollections.observableArrayList();
+	
+	@Override
+	public  void initialize(URL url, ResourceBundle resourcebundle) {
+		try{
+			ColunaCodigoDisciplina.setCellValueFactory(new PropertyValueFactory<>("id"));
+			ColunaTítulo.setCellValueFactory(new PropertyValueFactory<>("name"));
+			ColunaStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 		}
+		catch(Exception e){
+	        e.printStackTrace();
+	        out.println("Error nessa porraa");
+	    }
+		
+		List<Discipline> disciplinas = new ArrayList<>();
 	    try{
-	    	TabelaDisciplinas.setItems((ObservableList<Discipline>) dados);
+			disciplinas = daoDados.getAll();
+			for(Discipline d : lista ) {
+				out.println(d.getId());
+				out.println(d.getName());
+				out.println(d.getCode());
+			}
 	    }catch(Exception e){
 	        e.printStackTrace();
 	        out.println("Error on Building Data");
 	    }
+	    if (disciplinas != null) {
+	    	lista.addAll(disciplinas);
+	    	TabelaDisciplinas.setItems(lista);
+	    	todos.addAll(disciplinas);
+	    }
+	    else {
+	    	System.out.println("Erro.");
+	    }
+	    
 	}
 	
 	private void getStatus(ActionEvent event) {
