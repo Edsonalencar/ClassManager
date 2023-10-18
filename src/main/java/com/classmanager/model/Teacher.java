@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Teacher {
 	private Long id;
+	private Long usuario_id;
 	private String name;
 	private String cpf;
 	private Address address;
@@ -13,8 +14,9 @@ public class Teacher {
 	public Teacher() {
 	}
 
-	public Teacher(Long id, String name, String cpf, Address address, ArrayList<Class> classes) {
+	public Teacher(Long id, Long usuario_id, String name, String cpf, Address address, ArrayList<Class> classes) {
 		setId(id);
+		setUsuario_id(usuario_id);
 		setName(name);
 		setCPF(cpf);
 		setAddress(address);
@@ -73,9 +75,24 @@ public class Teacher {
 			this.id = id;
 	}
 
+	public Long getUsuario_id() {
+		return usuario_id;
+	}
 
+	public void setUsuario_id(Long usuario_id) {
+		if(usuario_id != null && usuario_id >= 0) {
+			this.usuario_id = usuario_id;
+		}
+	}
 
-	
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
 	public void register() {
 		//Registra professor no banco de dados.
 	}
@@ -105,6 +122,7 @@ public class Teacher {
 	public String toString() {
 		return "Teacher{" +
 				"id=" + id +
+				"usuario_id=" + usuario_id +
 				", name='" + name + '\'' +
 				", cpf='" + cpf + '\'' +
 				", address=" + address +

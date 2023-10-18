@@ -1,5 +1,7 @@
 package com.classmanager.controller;
 
+import com.classmanager.model.Student;
+import com.classmanager.model.Teacher;
 import com.classmanager.model.Usuario;
 import com.classmanager.view.Telas;
 import com.classmanager.DAO.UsuarioDAO;
@@ -28,6 +30,8 @@ public class TelaLogin {
         System.out.println("Senha: " + CampoSenha.getText());
 
         UsuarioDAO usuario = new UsuarioDAO();
+        Student student = new Student();
+        Teacher teacher = new Teacher();
         List<Usuario> usu;
         usu = usuario.buscar();
 
@@ -36,9 +40,9 @@ public class TelaLogin {
             if(CampoUsuario.getText().equals(u.getLogin()) && CampoSenha.getText().equals(u.getSenha())){
                 if(CampoUsuario.getText().equals("Diretor")){
                     Telas.Gerente_TelaInicial();
-                } else if (CampoUsuario.getText().equals("0000")) {
+                } else if (u.getId() == teacher.getUsuario_id()) {
                     Telas.Professor_TelaInicial();
-                } else if (CampoUsuario.getText().equals("1111")) {
+                } else if (u.getId() == student.getUsuario_id()) {
                     Telas.Aluno_TelaInicial();
                 }
             }

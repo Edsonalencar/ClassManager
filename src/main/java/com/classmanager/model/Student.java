@@ -2,6 +2,7 @@ package com.classmanager.model;
 
 public class Student {
 	private Long id;
+	private Long usuario_id;
 	private String name;
 	private String code;
 	private Address address;
@@ -10,8 +11,9 @@ public class Student {
 	public Student() {
 	}
 
-	public Student(Long id, String name, String code, Address address) {
+	public Student(Long id, Long usuario_id, String name, String code, Address address) {
 		setId(id);
+		setUsuario_id(usuario_id);
 		setName(name);
 		setCode(code);
 		setAddress(address);
@@ -65,8 +67,17 @@ public class Student {
 		if (id != null && id >= 0)
 			this.id = id;
 	}
-	
-	
+
+	public Long getUsuario_id() {
+		return usuario_id;
+	}
+
+	public void setUsuario_id(Long usuario_id) {
+		if (usuario_id != null && usuario_id >= 0) {
+			this.usuario_id = usuario_id;
+		}
+	}
+
 	public void register() {
 		//Registra estudante no banco de dados.
 	}
@@ -99,6 +110,7 @@ public class Student {
 	public String toString() {
 		return "Student{" +
 				"id=" + id +
+				"usuario_id=" + usuario_id +
 				", name='" + name + '\'' +
 				", code='" + code + '\'' +
 				", address=" + address +

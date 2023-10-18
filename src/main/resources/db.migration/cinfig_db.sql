@@ -30,8 +30,19 @@ CREATE TABLE timetable (
     end_time DATE
 );
 
+CREATE TABLE usuario(
+    id SERIAL PRIMARY KEY ,
+    login VARCHAR(30),
+    senha VARCHAR(30)
+);
+INSERT INTO usuario (login, senha) VALUES
+    ('Diretor', '123'),
+    ('0000','321'),
+    ('1111','000');
+
 CREATE TABLE student (
     id SERIAL PRIMARY KEY,
+    usuario_id SERIAL REFERENCES usuario(id),
     name VARCHAR(255),
     code VARCHAR(255) UNIQUE,
     address_id SERIAL REFERENCES address(id) ON UPDATE CASCADE
@@ -39,6 +50,7 @@ CREATE TABLE student (
 
 CREATE TABLE teacher (
     id SERIAL PRIMARY KEY,
+    usuario_id SERIAL REFERENCES usuario(id),
     name VARCHAR(255),
     cpf VARCHAR(255),
     address_id SERIAL REFERENCES address(id) ON UPDATE CASCADE
@@ -76,15 +88,7 @@ CREATE TABLE school_grade (
     class_id SERIAL REFERENCES class(id)
 );
 
-CREATE TABLE usuario(
-    id SERIAL PRIMARY KEY ,
-    login VARCHAR(30),
-    senha VARCHAR(30)
-);
-INSERT INTO usuario (login, senha) VALUES
-    ('Diretor', '123'),
-    ('0000','321'),
-    ('1111','000');
+
 
 CREATE VIEW disciplinaAtiva AS
     (SELECT c.id, d.name, t.start_time, t.end_time FROM class AS c, discipline AS d,timetable AS t
