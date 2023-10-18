@@ -34,29 +34,30 @@ CREATE TABLE student (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     code VARCHAR(255) UNIQUE,
-    address_id SERIAL REFERENCES address(id)
+    address_id SERIAL REFERENCES address(id) ON UPDATE CASCADE
 );
+INSERT INTO student VALUES (name, code, address_id)
 
 CREATE TABLE teacher (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     cpf VARCHAR(255),
-    address_id SERIAL REFERENCES address(id)
+    address_id SERIAL REFERENCES address(id) ON UPDATE CASCADE
 );
 
 CREATE TABLE class (
    id SERIAL PRIMARY KEY,
-   discipline_id SERIAL REFERENCES discipline(id),
-   timetable_id SERIAL REFERENCES timetable(id),
-   teacher_id SERIAL REFERENCES teacher(id),
+   discipline_id SERIAL REFERENCES discipline(id) ON DELETE CASCADE,
+   timetable_id SERIAL REFERENCES timetable(id) ON UPDATE CASCADE,
+   teacher_id SERIAL REFERENCES teacher(id) ON UPDATE CASCADE,
    local VARCHAR(255),
    semester VARCHAR(255),
    status VARCHAR(255)
 );
 
 CREATE TABLE student_class (
-   student_id SERIAL REFERENCES student(id),
-   class_id SERIAL REFERENCES class(id),
+   student_id SERIAL REFERENCES student(id) ON DELETE CASCADE,
+   class_id SERIAL REFERENCES class(id) ON DELETE CASCADE,
    PRIMARY KEY (student_id, class_id)
 );
 
@@ -64,15 +65,19 @@ CREATE TABLE frequency (
     id SERIAL PRIMARY KEY,
     day DATE,
     present BOOLEAN,
-    student_id SERIAL REFERENCES address(id),
-    class_id SERIAL REFERENCES class(id)
+    student_id SERIAL REFERENCES address(id) ON DELETE CASCADE,
+    class_id SERIAL REFERENCES class(id) ON DELETE CASCADE
 );
 
 CREATE TABLE school_grade (
     id SERIAL PRIMARY KEY,
     period VARCHAR(255),
     grade INT,
-    student_id SERIAL REFERENCES address(id),
+    student_id SERIAL REFERENCES address(id) ON DELETE CASCADE,
     class_id SERIAL REFERENCES class(id)
 );
+
+CREATE VIEW disciplinaAtiva AS
+    (SELECT c.id, d.name, t.start_time, t.end_time FROM class AS c, discipline AS d,timetable AS t
+    WHERE c.discipline_id = d.id AND c.timetable_id = t.id);
 

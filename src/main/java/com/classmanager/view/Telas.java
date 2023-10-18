@@ -4,6 +4,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
+import javafx.stage.PopupWindow;
 import javafx.stage.Stage;
 
 public class Telas extends Application{
@@ -89,8 +92,11 @@ public class Telas extends Application{
     }
     public static void Gerente_TelaCadastroDisciplina() throws Exception{
         Parent root = FXMLLoader.load(Telas.class.getResource("VE/Gerente_TelaCadastroDisciplina.fxml"));
-        Scene cena = new Scene(root);
-        primaryStage.setScene(cena);
+        Stage popupStage = new Stage();
+        popupStage.initModality(Modality.APPLICATION_MODAL);
+        Scene popupScene = new Scene(root);
+        popupStage.setScene(popupScene);
+        popupStage.showAndWait();
     }
     public static void Gerente_TelaDisciplina() throws Exception{
         Parent root = FXMLLoader.load(Telas.class.getResource("VE/Gerente_TelaDisciplinas.fxml"));

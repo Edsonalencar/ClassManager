@@ -29,7 +29,7 @@ public class Gerente_TelaDisciplinas implements Initializable {
     
     
 	@Override
-	public  void initialize(URL url, ResourceBundle resourcebundle) {
+	public void initialize(URL url, ResourceBundle resourcebundle) {
 		DisciplineDAO daoDados = new DisciplineDAO();
 	    dados = daoDados.getAll();
 		for(Discipline d : dados ) {
