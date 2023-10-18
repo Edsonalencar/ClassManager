@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import com.classmanager.DAO.DisciplineDAO;
 import com.classmanager.DAO.StudentDAO;
 import com.classmanager.DAO.TeacherDAO;
+import com.classmanager.model.Student;
 import com.classmanager.view.Telas;
 
 import javafx.event.ActionEvent;
@@ -28,11 +29,14 @@ public class Gerente_CadastrarTurma implements Initializable {
 	@FXML private ChoiceBox<String> ChoiceBoxProfessores;
 	@FXML private ChoiceBox<String> ChoiceBoxDisciplinas;
 	
-	List<String> nomesDisciplinas = new ArrayList<String>();
-	List<String> nomesProfessores = new ArrayList<String>();
+	List<Student> Alunos = daoAlunos.getAll();{
 	List<String> nomesParticipantes = new ArrayList<String>();
 	nomesParticipantes.add(traço);
+	for (Student s : Alunos) {
+		nomesParticipantes.add(s.getName());
+	}
 	
+	}
 	private void getPartChoiceBox(ActionEvent event) {
 		String Participante = ChoiceBoxParticipantes.getValue();
 		nome = Participante;

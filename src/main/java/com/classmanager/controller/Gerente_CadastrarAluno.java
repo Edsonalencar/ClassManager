@@ -27,7 +27,6 @@ public class Gerente_CadastrarAluno implements Initializable {
 	public StudentDAO daoAluno = new StudentDAO();
 	public UsuarioDAO daoUsuario = new UsuarioDAO();
 
-	
 	private String[] dados = {"-", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"};
 	
 	@FXML private ChoiceBox<String> ChoiceBoxUF;

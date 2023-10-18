@@ -33,25 +33,5 @@ public class TelaLogin {
         Student student = new Student();
         Teacher teacher = new Teacher();
         List<Usuario> usu;
-        usu = usuario.buscar();
-
-
-        for (Usuario u : usu){
-            if(CampoUsuario.getText().equals(u.getLogin()) && CampoSenha.getText().equals(u.getSenha())){
-                if(CampoUsuario.getText().equals("Diretor")){
-                    Telas.Gerente_TelaInicial();
-                } else if (u.getId() == teacher.getUsuario_id()) {
-                    Telas.Professor_TelaInicial();
-                } else if (u.getId() == student.getUsuario_id()) {
-                    Telas.Aluno_TelaInicial();
-                }
-            }
-            else {
-                LabelErro.setVisible(true);
-            }
-        }
-
     }
-
-
 }

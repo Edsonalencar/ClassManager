@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Teacher {
 	private Long id;
-	private Long usuario_id;
+	private Usuario user;
 	private String name;
 	private String cpf;
 	private Address address;
@@ -14,9 +14,9 @@ public class Teacher {
 	public Teacher() {
 	}
 
-	public Teacher(Long id, Long usuario_id, String name, String cpf, Address address, ArrayList<Class> classes) {
+	public Teacher(Long id, Usuario user, String name, String cpf, Address address, ArrayList<Class> classes) {
 		setId(id);
-		setUsuario_id(usuario_id);
+		setUser(user);
 		setName(name);
 		setCPF(cpf);
 		setAddress(address);
@@ -28,7 +28,6 @@ public class Teacher {
 		setAddress(address);
 		setClasses(classes);
 	}
-
 
 
 	public String getName() {
@@ -75,16 +74,6 @@ public class Teacher {
 			this.id = id;
 	}
 
-	public Long getUsuario_id() {
-		return usuario_id;
-	}
-
-	public void setUsuario_id(Long usuario_id) {
-		if(usuario_id != null && usuario_id >= 0) {
-			this.usuario_id = usuario_id;
-		}
-	}
-
 	public String getCpf() {
 		return cpf;
 	}
@@ -93,36 +82,19 @@ public class Teacher {
 		this.cpf = cpf;
 	}
 
-	public void register() {
-		//Registra professor no banco de dados.
-	}
-	
-	public void update() {
-		//Atualiza professor no banco de dados.
-	}
-	
-	public void registerClass() {
-		//Registra uma classe no banco de dados.
-	}
-	
-	public void deleteClass() {
-		//Deleta uma classe no banco de dados.
-	}
-	
-	public void findTeacherByClass() {
-		//Procura professor por sua classe no banco de dados.
-	}
-	
-	public void findTeacherByName() {
-		//Procura professor por seu nome no banco de dados.
+	public Usuario getUser() {
+		return user;
 	}
 
+	public void setUser(Usuario user) {
+		this.user = user;
+	}
 
 	@Override
 	public String toString() {
 		return "Teacher{" +
 				"id=" + id +
-				"usuario_id=" + usuario_id +
+				"usuario=" + user +
 				", name='" + name + '\'' +
 				", cpf='" + cpf + '\'' +
 				", address=" + address +

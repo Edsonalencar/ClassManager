@@ -33,19 +33,21 @@ CREATE TABLE timetable (
 CREATE TABLE usuario(
     id SERIAL PRIMARY KEY ,
     login VARCHAR(30),
-    senha VARCHAR(30)
+    senha VARCHAR(30),
+    role VARCHAR(15)
 );
-INSERT INTO usuario (login, senha) VALUES
-    ('Diretor', '123'),
-    ('0000','321'),
-    ('1111','000');
+
+INSERT INTO usuario (login, senha, role) VALUES
+    ('teacher','123', 'TEACHER'),
+    ('student','123', 'STUDENT'),
+    ('admin','admin', 'ADMIN');
 
 CREATE TABLE student (
     id SERIAL PRIMARY KEY,
     usuario_id SERIAL REFERENCES usuario(id),
     name VARCHAR(255),
     code VARCHAR(255) UNIQUE,
-    address_id SERIAL REFERENCES address(id) ON UPDATE CASCADE
+    address_id SERIAL REFERENCES address(id)
 );
 
 CREATE TABLE teacher (
@@ -53,12 +55,12 @@ CREATE TABLE teacher (
     usuario_id SERIAL REFERENCES usuario(id),
     name VARCHAR(255),
     cpf VARCHAR(255),
-    address_id SERIAL REFERENCES address(id) ON UPDATE CASCADE
+    address_id SERIAL REFERENCES address(id)
 );
 
 CREATE TABLE class (
    id SERIAL PRIMARY KEY,
-   discipline_id SERIAL REFERENCES discipline(id) ON DELETE CASCADE,
+   discipline_id SERIAL REFERENCES discipline(id),
    timetable_id SERIAL REFERENCES timetable(id) ON UPDATE CASCADE,
    teacher_id SERIAL REFERENCES teacher(id) ON UPDATE CASCADE,
    local VARCHAR(255),
@@ -76,18 +78,17 @@ CREATE TABLE frequency (
     id SERIAL PRIMARY KEY,
     day DATE,
     present BOOLEAN,
-    student_id SERIAL REFERENCES address(id) ON DELETE CASCADE,
-    class_id SERIAL REFERENCES class(id) ON DELETE CASCADE
+    student_id SERIAL REFERENCES student(id) ON DELETE CASCADE,
+    class_id SERIAL REFERENCES class(id)
 );
 
 CREATE TABLE school_grade (
     id SERIAL PRIMARY KEY,
     period VARCHAR(255),
     grade INT,
-    student_id SERIAL REFERENCES address(id) ON DELETE CASCADE,
+    student_id SERIAL REFERENCES student(id) ON DELETE CASCADE,
     class_id SERIAL REFERENCES class(id)
 );
-
 
 
 CREATE VIEW disciplinaAtiva AS

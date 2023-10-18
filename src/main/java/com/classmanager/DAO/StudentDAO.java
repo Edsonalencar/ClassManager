@@ -1,9 +1,11 @@
 package com.classmanager.DAO;
 
 import com.classmanager.enums.DisciplineStatus;
+import com.classmanager.enums.RoleType;
 import com.classmanager.model.Address;
 import com.classmanager.model.Discipline;
 import com.classmanager.model.Student;
+import com.classmanager.model.Usuario;
 
 import java.sql.Connection;
 
@@ -18,9 +20,10 @@ import java.util.List;
 public class StudentDAO extends BaseDAO {
     private Connection con = getConection();
     private AddressDAO addressDAO = new AddressDAO();
+    private UsuarioDAO usuarioDAO = new UsuarioDAO();
 
     public Student register(Student student) {
-        String sql = "INSERT INTO student (name, code, address_id) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO student (name, code, address_id, usuario_id) VALUES (?, ?, ?, ?)";
 
         try (PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             pstmt.setString(1, student.getName());
@@ -35,7 +38,11 @@ public class StudentDAO extends BaseDAO {
             }
             else student.setAddress(addressDAO.create(student.getAddress()));
 
+            Usuario user = new Usuario(student.getUser().getLogin(),student.getUser().getSenha() ,RoleType.STUDENT);
+            Usuario newUser = usuarioDAO.register(user);
+
             pstmt.setLong(3, student.getAddress().getId());
+            pstmt.setLong(4, newUser.getUserId());
 
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected == 1) {
@@ -43,6 +50,8 @@ public class StudentDAO extends BaseDAO {
                 if (generatedKeys.next()) {
                     int generatedId = generatedKeys.getInt(1);
                     student.setId((long) generatedId);
+                    student.setUser(newUser);
+
                     return student;
                 }
             }
@@ -82,7 +91,10 @@ public class StudentDAO extends BaseDAO {
                 student.setCode(rs.getString("code"));
 
                 Address address = addressDAO.getById(rs.getLong("address_id"));
+                Usuario user = usuarioDAO.getById(rs.getLong("usuario_id"));
+
                 student.setAddress(address);
+                student.setUser(user);
 
                 students.add(student);
             }
@@ -108,7 +120,10 @@ public class StudentDAO extends BaseDAO {
                 student.setCode(rs.getString("code"));
 
                 Address address = addressDAO.getById(rs.getLong("address_id"));
+                Usuario user = usuarioDAO.getById(rs.getLong("usuario_id"));
+
                 student.setAddress(address);
+                student.setUser(user);
 
                 students.add(student);
             }
@@ -136,7 +151,10 @@ public class StudentDAO extends BaseDAO {
                 student.setCode(rs.getString("code"));
 
                 Address address = addressDAO.getById(rs.getLong("address_id"));
+                Usuario user = usuarioDAO.getById(rs.getLong("usuario_id"));
+
                 student.setAddress(address);
+                student.setUser(user);
 
                 students.add(student);
             }
@@ -162,7 +180,10 @@ public class StudentDAO extends BaseDAO {
                 student.setCode(rs.getString("code"));
 
                 Address address = addressDAO.getById(rs.getLong("address_id"));
+                Usuario user = usuarioDAO.getById(rs.getLong("usuario_id"));
+
                 student.setAddress(address);
+                student.setUser(user);
 
                 students.add(student);
             }
@@ -171,6 +192,32 @@ public class StudentDAO extends BaseDAO {
         }
 
         return students;
+    }
+
+    public Student findStudentsByUser(Usuario user) {
+        Student student = new Student();
+        String sql = "SELECT * FROM student WHERE usuario_id = ?";
+
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setLong(1, user.getUserId());
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                student.setId(rs.getLong("id"));
+                student.setName(rs.getString("name"));
+                student.setCode(rs.getString("code"));
+
+                Address address = addressDAO.getById(rs.getLong("address_id"));
+                student.setAddress(address);
+                student.setUser(user);
+
+                return  student;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
 
