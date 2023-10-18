@@ -4,8 +4,8 @@ import com.classmanager.enums.DisciplineStatus;
 
 public class Discipline {
     private Long id;
-    private  String name;
-    private  String code;
+    private String name;
+    private String code;
     private DisciplineStatus status;
 
 

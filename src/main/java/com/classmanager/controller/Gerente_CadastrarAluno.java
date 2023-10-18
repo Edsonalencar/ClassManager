@@ -1,10 +1,15 @@
 package com.classmanager.controller;
 
+import static java.lang.System.out;
+
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.classmanager.view.Telas;
 import com.classmanager.model.Student;
+import com.classmanager.DAO.StudentDAO;
 import com.classmanager.model.Address;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,9 +21,11 @@ import javafx.scene.control.TextField;
 
 public class Gerente_CadastrarAluno implements Initializable {
 	
-	@FXML
-	private ChoiceBox<String> ChoiceBoxUF;
+	public StudentDAO daoDados = new StudentDAO();
+	
 	private String[] dados = {"-", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"};
+	
+	@FXML private ChoiceBox<String> ChoiceBoxUF;
 	@FXML private TextField CampoNome;
 	@FXML private TextField CampoCEP;
 	@FXML private TextField CampoLogradouro;
@@ -33,7 +40,15 @@ public class Gerente_CadastrarAluno implements Initializable {
 	private String estado; 
 	private String bairro; 
 	private int numero; 
-
+	long mat = 0;
+	long mat1 = 1;
+	
+	List<Student> alunos = daoDados.getAll();{
+	for(Student s : alunos ) {
+		mat = s.getId();
+		mat = mat + 1 + 202300;}
+	}
+	
 	private void getUF(ActionEvent event) {
 		String Estado = ChoiceBoxUF.getValue();
 		estado = Estado;
@@ -41,12 +56,12 @@ public class Gerente_CadastrarAluno implements Initializable {
 	
 	private void handle(ActionEvent event) throws Exception {
 		nome = CampoNome.getText();
-		cidade = CampoNome.getText();
-		estado = CampoNome.getText();
-		bairro = CampoNome.getText();
+		cidade = CampoCidade.getText();
+		bairro = CampoBairro.getText();
 		numero = Integer.parseInt(CampoNumero.getText());
-		//Address end(null, cidade, estado, bairro, numero);
-		//Student aluno(nome, null, end, null);
+		Address end = new Address(null, cidade, estado, bairro, numero);
+		Student aluno = new Student(nome, ""+mat, end);
+		daoDados.register(aluno);
 		Telas.Gerente_TelaAlunos();
 	}
 	

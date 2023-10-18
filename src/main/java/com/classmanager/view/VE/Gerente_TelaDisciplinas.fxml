@@ -22,13 +22,10 @@
       </Text>
       <TextField fx:id="CampoCodigo" layoutX="54.0" layoutY="152.0" prefHeight="25.0" prefWidth="154.0" promptText="Código" />
       <TableView fx:id="TabelaDisciplinas" editable="true" layoutX="54.0" layoutY="188.0" prefHeight="390.0" prefWidth="732.0">
-        <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
-        </columnResizePolicy>
         <columns>
-            <TableColumn fx:id="ColunaCodigoTurma" text="Código"/>
-            <TableColumn fx:id="ColunaTítulo" text="Título"/>
-            <TableColumn fx:id="ColunaStatus" text="Status"/>
+            <TableColumn fx:id="ColunaCodigoDisciplina" prefWidth="70.0" text="Código"/>
+            <TableColumn fx:id="ColunaTítulo" prefWidth="562.0" text="Título"/>
+            <TableColumn fx:id="ColunaStatus" prefWidth="100.0" text="Status"/>
         </columns>
       </TableView>
       <Button fx:id="BotãoAdicionar" layoutX="700.0" layoutY="151.0" mnemonicParsing="false" onAction="#addDisc" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #00ADEF;" text="Adicionar" textFill="WHITE" />
