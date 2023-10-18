@@ -11,8 +11,8 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
-<AnchorPane fx:id="TelaInicialGerente" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TelaInicial">
+<?import javafx.geometry.Insets?>
+<AnchorPane fx:id="TelaInicialGerente" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.classmanager.controller.Gerente_ShowAlunos">
    <children>
       <padding>
         <Insets top="20" bottom="20" left="20" right="20" />
@@ -40,18 +40,18 @@
          </font>
       </Text>
       <TextField fx:id="CampoBuscarNome" layoutX="315.0" layoutY="206.0" prefHeight="25.0" prefWidth="253.0" promptText="Buscar por nome" />
-      <Button fx:id="BotãoSair" layoutX="794.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: #3871C1;" text="Sair" textFill="WHITE" />
+      <Button fx:id="BotãoSair" layoutX="794.0" layoutY="4.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #3871C1;" text="Sair" textFill="WHITE" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="35.0" layoutY="33.0" stroke="#f7f7f7" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" style="-fx-effect: dropshadow(gaussian,rgba(0,0,0,0.3),0.5,0.3,0,1);" width="840.0" AnchorPane.bottomAnchor="532.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0" />
-      <Button fx:id="BotãoVoltar" alignment="BOTTOM_LEFT" layoutX="44.0" layoutY="81.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: 0;" text="&lt;  Voltar" AnchorPane.bottomAnchor="494.0" AnchorPane.topAnchor="81.0">
+      <Button fx:id="BotãoVoltar" alignment="BOTTOM_LEFT" layoutX="44.0" layoutY="81.0" mnemonicParsing="false" onAction="#telaAluno" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: 0;" text="&lt;  Voltar" AnchorPane.bottomAnchor="494.0" AnchorPane.topAnchor="81.0">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="BotãoInicioBarra" layoutX="50.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Início" textFill="#3871c1" />
-      <Button fx:id="BotãoProfessoresBarra" layoutX="99.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Professores" textFill="#3871c1" />
-      <Button fx:id="BotãoAlunosBarra" layoutX="181.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Alunos" textFill="#3871c1" />
-      <Button fx:id="BotãoTurmasBarra" layoutX="238.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Turmas" textFill="#3871c1" />
-      <Button fx:id="BotãoDisciplinasBarra" layoutX="298.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-color: #f8f8f8;" text="Disciplinas" textFill="#3871c1" />
+      <Button fx:id="BotãoInicioBarra" layoutX="50.0" layoutY="39.0" mnemonicParsing="false" onAction="#telaInicio" style="-fx-background-color: #f8f8f8;" text="Início" textFill="#3871c1" />
+      <Button fx:id="BotãoProfessoresBarra" layoutX="99.0" layoutY="39.0" mnemonicParsing="false" onAction="#telaProfessor" style="-fx-background-color: #f8f8f8;" text="Professores" textFill="#3871c1" />
+      <Button fx:id="BotãoAlunosBarra" layoutX="181.0" layoutY="39.0" mnemonicParsing="false" onAction="#telaAluno" style="-fx-background-color: #f8f8f8;" text="Alunos" textFill="#3871c1" />
+      <Button fx:id="BotãoTurmasBarra" layoutX="238.0" layoutY="39.0" mnemonicParsing="false" onAction="#telaTurma" style="-fx-background-color: #f8f8f8;" text="Turmas" textFill="#3871c1" />
+      <Button fx:id="BotãoDisciplinasBarra" layoutX="298.0" layoutY="39.0" mnemonicParsing="false" onAction="#telaDisciplina" style="-fx-background-color: #f8f8f8;" text="Disciplinas" textFill="#3871c1" />
       <Line endX="-28.0" fill="#3871c1" layoutX="202.0" layoutY="70.0" startX="-100.0" stroke="#3871c1" strokeWidth="2.5" />
       <TextField fx:id="CampoBuscarSemestre" layoutX="577.0" layoutY="206.0" prefHeight="25.0" prefWidth="208.0" promptText="Buscar por semestre" />
       <Label fx:id="LabelNome" alignment="CENTER" layoutX="54.0" layoutY="374.0" prefHeight="17.0" prefWidth="200.0" text="Nome do Aluno">

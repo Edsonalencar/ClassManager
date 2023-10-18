@@ -36,7 +36,6 @@ CREATE TABLE student (
     code VARCHAR(255) UNIQUE,
     address_id SERIAL REFERENCES address(id) ON UPDATE CASCADE
 );
-INSERT INTO student VALUES (name, code, address_id)
 
 CREATE TABLE teacher (
     id SERIAL PRIMARY KEY,
@@ -83,9 +82,9 @@ CREATE TABLE usuario(
     senha VARCHAR(30)
 );
 INSERT INTO usuario (login, senha) VALUES
-    ("Diretor", "123"),
-    ("0000","321"),
-    ("1111","000");
+    ('Diretor', '123'),
+    ('0000','321'),
+    ('1111','000');
 
 CREATE VIEW disciplinaAtiva AS
     (SELECT c.id, d.name, t.start_time, t.end_time FROM class AS c, discipline AS d,timetable AS t

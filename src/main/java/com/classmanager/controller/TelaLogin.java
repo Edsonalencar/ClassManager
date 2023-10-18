@@ -33,11 +33,11 @@ public class TelaLogin {
         usu = usuario.buscar(CampoUsuario.getText(), CampoSenha.getText());
 
         for (Usuario u : usu){
-            if(u.getLogin().equals("1")){
+            if(u.getLogin().equals("Diretor")){
                 Telas.Gerente_TelaInicial();
-            } else if (u.getLogin().equals("2")) {
+            } else if (u.getLogin().equals("0000")) {
                 Telas.Professor_TelaInicial();
-            } else if (u.getLogin().equals("3")) {
+            } else if (u.getLogin().equals("1111")) {
                 Telas.Aluno_TelaInicial();
             }
             else {
