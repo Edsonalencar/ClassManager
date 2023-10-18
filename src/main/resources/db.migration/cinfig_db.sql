@@ -77,6 +77,16 @@ CREATE TABLE school_grade (
     class_id SERIAL REFERENCES class(id)
 );
 
+CREATE TABLE usuario(
+    id SERIAL PRIMARY KEY ,
+    login VARCHAR(30),
+    senha VARCHAR(30)
+);
+INSERT INTO usuario (login, senha) VALUES
+    ("Diretor", "123"),
+    ("0000","321"),
+    ("1111","000");
+
 CREATE VIEW disciplinaAtiva AS
     (SELECT c.id, d.name, t.start_time, t.end_time FROM class AS c, discipline AS d,timetable AS t
     WHERE c.discipline_id = d.id AND c.timetable_id = t.id);

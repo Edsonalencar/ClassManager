@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 public class TelaLogin {
     @FXML private Label LabelErro;
     @FXML private TextField CampoUsuario;
-    @FXML private PasswordField CampoSenha;
+    @FXML private TextField CampoSenha;
     private List<Usuario> usu;
 
     

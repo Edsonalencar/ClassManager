@@ -8,7 +8,7 @@ public class BaseDAO {
     Connection con = null;
     private  String url = "jdbc:postgresql://localhost:5432/postgres";
     private String user = "postgres";
-    private String password = "postgre234";
+    private String password = "4252";
 
     public String getUrl() {
         return url;
