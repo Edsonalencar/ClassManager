@@ -4,6 +4,8 @@ import com.classmanager.view.Telas;
 import javafx.event.ActionEvent;
 
 public class Gerente_ShowAlunos {
+	
+	
     public void telaProfessor(ActionEvent event) throws Exception {
         Telas.Gerente_TelaProfessores();
     }

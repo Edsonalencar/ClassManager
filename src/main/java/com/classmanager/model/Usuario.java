@@ -4,7 +4,14 @@ public class Usuario {
     private String login;
     private String senha;
     private long id;
-
+    
+    
+    
+    public Usuario(String login, String senha) {
+    	setLogin(login);
+    	setSenha(senha);
+	}
+    
     public String getLogin() {
         return login;
     }

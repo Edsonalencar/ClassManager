@@ -40,7 +40,7 @@
             <Font name="Verdana" size="12.0" />
          </font>
       </Button>
-      <Label alignment="CENTER" layoutX="115.0" layoutY="87.0" prefHeight="25.0" prefWidth="43.0" text="X" textFill="WHITE">
+      <Label alignment="CENTER" fx:id="NumeroProfessores" layoutX="115.0" layoutY="87.0" prefHeight="25.0" prefWidth="43.0" text="X" textFill="WHITE">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
@@ -50,7 +50,7 @@
             <Font name="Verdana" size="12.0" />
          </font>
       </Button>
-      <Label alignment="CENTER" layoutX="304.0" layoutY="87.0" prefHeight="25.0" prefWidth="43.0" text="Y">
+      <Label alignment="CENTER" fx:id="NumeroAlunos" layoutX="304.0" layoutY="87.0" prefHeight="25.0" prefWidth="43.0" text="Y">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
@@ -66,7 +66,7 @@
             <Font name="Verdana" size="12.0" />
          </font>
       </Button>
-      <Label alignment="CENTER" layoutX="492.0" layoutY="87.0" prefHeight="25.0" prefWidth="43.0" text="W">
+      <Label alignment="CENTER" fx:id="NumeroTurmas" layoutX="492.0" layoutY="87.0" prefHeight="25.0" prefWidth="43.0" text="W">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
@@ -76,7 +76,7 @@
             <Font name="Verdana" size="12.0" />
          </font>
       </Button>
-      <Label alignment="CENTER" layoutX="681.0" layoutY="87.0" prefHeight="25.0" prefWidth="43.0" text="Z">
+      <Label alignment="CENTER" fx:id="NumeroDisciplinas" layoutX="681.0" layoutY="87.0" prefHeight="25.0" prefWidth="43.0" text="Z">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>

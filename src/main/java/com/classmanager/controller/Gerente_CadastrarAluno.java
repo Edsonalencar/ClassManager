@@ -9,11 +9,14 @@ import java.util.ResourceBundle;
 
 import com.classmanager.view.Telas;
 import com.classmanager.model.Student;
+import com.classmanager.model.Usuario;
 import com.classmanager.DAO.StudentDAO;
+import com.classmanager.DAO.UsuarioDAO;
 import com.classmanager.model.Address;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -21,7 +24,9 @@ import javafx.scene.control.TextField;
 
 public class Gerente_CadastrarAluno implements Initializable {
 	
-	public StudentDAO daoDados = new StudentDAO();
+	public StudentDAO daoAluno = new StudentDAO();
+	public UsuarioDAO daoUsuario = new UsuarioDAO();
+
 	
 	private String[] dados = {"-", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"};
 	
@@ -34,19 +39,24 @@ public class Gerente_CadastrarAluno implements Initializable {
 	@FXML private TextField CampoComplemento;
 	@FXML private TextField CampoBairro;
 	@FXML private Button BotãoSalvar;
+	@FXML private TextField AlunoLogin;
+	@FXML private TextField AlunoSenha;
+	
 	
 	private String nome;
 	private String cidade; 
 	private String estado; 
 	private String bairro; 
+	private String login;
+	private String senha;
 	private int numero; 
 	long mat = 0;
 	long mat1 = 1;
 	
-	List<Student> alunos = daoDados.getAll();{
+	List<Student> alunos = daoAluno.getAll();{
 	for(Student s : alunos ) {
 		mat = s.getId();
-		mat = mat + 1 + 202300;}
+		mat = mat + 1 + 20231000;}
 	}
 	
 	private void getUF(ActionEvent event) {
@@ -55,14 +65,39 @@ public class Gerente_CadastrarAluno implements Initializable {
 	}
 	
 	private void handle(ActionEvent event) throws Exception {
-		nome = CampoNome.getText();
+		login = AlunoLogin.getText();
+		senha = AlunoSenha.getText();
+		
+		nome = CampoNome.getText().toLowerCase();
+		
 		cidade = CampoCidade.getText();
-		bairro = CampoBairro.getText();
-		numero = Integer.parseInt(CampoNumero.getText());
+		bairro = CampoBairro.getText();	
+		String teste = CampoNumero.getText();
+		if (teste.isEmpty()) {
+			numero = 0;
+		}
+		else{
+			numero = Integer.parseInt(CampoNumero.getText());
+		}
 		Address end = new Address(null, cidade, estado, bairro, numero);
-		Student aluno = new Student(nome, ""+mat, end);
-		daoDados.register(aluno);
-		Telas.Gerente_TelaAlunos();
+		
+		if (!login.isEmpty() && !senha.isEmpty() && !nome.isEmpty() && !cidade.isEmpty() && !bairro.isEmpty() && !estado.isEmpty()
+				&& numero != 0) {
+			Student aluno = new Student(nome, ""+mat, end);
+			Usuario user = new Usuario(login, senha);
+			
+			daoAluno.register(aluno);
+			daoUsuario.register(user);
+			Telas.Gerente_TelaAlunos();
+		}
+		else {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+	        alert.setTitle("Erro");
+	        alert.setContentText("Campos Obrigatórios (*) devem ser preenchidos");
+	        alert.show();
+		}
+		
+		
 	}
 	
 	@Override
@@ -79,13 +114,7 @@ public class Gerente_CadastrarAluno implements Initializable {
 				e.printStackTrace();
 			}
 		});
-	}
-	
-	
-	
-	
-	
-	
+	}	
 
 	public void telaInicio(ActionEvent event) throws Exception {
 		Telas.Gerente_TelaInicial();
