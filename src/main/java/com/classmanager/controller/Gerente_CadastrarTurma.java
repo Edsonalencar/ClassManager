@@ -41,10 +41,10 @@ public class Gerente_CadastrarTurma implements Initializable {
 		String Participante = ChoiceBoxParticipantes.getValue();
 		nome = Participante;
 	}
-	
+
 	@Override
 	public void initialize(URL url, ResourceBundle resourcebundle) {
-		ChoiceBoxParticipantes.getItems().addAll(nomesParticipantes);
+		//ChoiceBoxParticipantes.getItems().addAll(nomesParticipantes);
 		ChoiceBoxParticipantes.setOnAction(this::getPartChoiceBox);
 		ChoiceBoxParticipantes.getSelectionModel().selectFirst();
 	}
