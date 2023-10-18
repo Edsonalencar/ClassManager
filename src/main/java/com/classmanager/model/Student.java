@@ -2,25 +2,32 @@ package com.classmanager.model;
 
 public class Student {
 	private Long id;
-	private Long usuario_id;
 	private String name;
 	private String code;
 	private Address address;
-
+	private Usuario user;
 
 	public Student() {
 	}
 
-	public Student(Long id, Long usuario_id, String name, String code, Address address) {
+	public Student(Long id, String name, String code, Address address, Usuario user) {
 		setId(id);
-		setUsuario_id(usuario_id);
 		setName(name);
 		setCode(code);
 		setAddress(address);
+		setUser(user);
 	}
+	public Student(String name, String code, Address address, Usuario user) {
+		setName(name);
+		setCode(code);
+		setUser(user);
+		setAddress(address);
+	}
+
 	public Student(String name, String code, Address address) {
 		setName(name);
 		setCode(code);
+		setUser(user);
 		setAddress(address);
 	}
 
@@ -68,49 +75,19 @@ public class Student {
 			this.id = id;
 	}
 
-	public Long getUsuario_id() {
-		return usuario_id;
+	public Usuario getUser() {
+		return user;
 	}
 
-	public void setUsuario_id(Long usuario_id) {
-		if (usuario_id != null && usuario_id >= 0) {
-			this.usuario_id = usuario_id;
-		}
-	}
-
-	public void register() {
-		//Registra estudante no banco de dados.
-	}
-	
-	public void update() {
-		//Atualiza estudante no banco de dados.
-	}
-	
-	public void addHistoric() {
-		//Adiciona histórido do estudante no banco de dados.
-	}
-	
-	public void updateHistoric() {
-		//Atualiza histórico do estudante no banco de dados.
-	}
-	
-	public void findStudentByClass() {
-		//Procura estudante por sua classe no banco de dados.
-	}
-	
-	public void findStudentByName() {
-		//Procura estudante por seu nome no banco de dados.
-	}
-	
-	public void findClassByDiscipline() {
-		//Procura classe por disciplina no banco de dados.
+	public void setUser(Usuario user) {
+		this.user = user;
 	}
 
 	@Override
 	public String toString() {
 		return "Student{" +
 				"id=" + id +
-				"usuario_id=" + usuario_id +
+				"usuario=" + user +
 				", name='" + name + '\'' +
 				", code='" + code + '\'' +
 				", address=" + address +
