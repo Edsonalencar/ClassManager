@@ -26,9 +26,9 @@ public class TimetableDAO extends BaseDAO {
                 if (generatedKeys.next()) {
                     int generatedId = generatedKeys.getInt(1);
                     timetable.setId((long) generatedId);
-
-                    return timetable;
                 }
+
+                return timetable;
             }
         } catch (SQLException e) {
             e.printStackTrace();

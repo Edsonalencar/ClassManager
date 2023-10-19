@@ -32,9 +32,9 @@ public class UsuarioDAO extends BaseDAO {
                 if (generatedKeys.next()) {
                     int generatedId = generatedKeys.getInt(1);
                     usuario.setUserId((long) generatedId);
-
-                    return usuario;
                 }
+
+                return usuario;
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -13,6 +13,7 @@ public class ClassDAO extends BaseDAO {
     private TimetableDAO timetableDAO = new TimetableDAO();
     private DisciplineDAO disciplineDAO = new DisciplineDAO();
     private TeacherDAO teacherDAO = new TeacherDAO();
+    private StudentDAO studentDAO = new StudentDAO();
 
     public Class register(Class aclass) {
         String sql = "INSERT INTO class (local, semester, status, discipline_id, teacher_id, timetable_id ) VALUES (?, ?, ?, ?, ?, ?)";
@@ -34,9 +35,9 @@ public class ClassDAO extends BaseDAO {
                 if (generatedKeys.next()) {
                     int generatedId = generatedKeys.getInt(1);
                     aclass.setId((long) generatedId);
-
-                    return aclass;
                 }
+
+                return aclass;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -97,6 +98,9 @@ public class ClassDAO extends BaseDAO {
                 aClass.setTimetable(timetable);
                 aClass.setDiscipline(discipline);
 
+                ArrayList<Student> students = studentDAO.findStudentsByClass(aClass.getId());
+                aClass.setStudents(students);
+
                 return aClass;
             }
         } catch (SQLException e) {
@@ -106,29 +110,62 @@ public class ClassDAO extends BaseDAO {
         return null;
     }
 
-
-    public List<Class> findClassByTeacher(String teacherName) {
-        List<Class> classes = new ArrayList<>();
-
-        String sql = "SELECT c.* FROM class c " +
-                "INNER JOIN teacher t ON c.teacher_id = t.id " +
-                "WHERE t.name = ?";
+    public List<Class> findClassByStudent(long id) {
+        List<Class>  classes = new ArrayList<>();
+        String sql = "SELECT class_id FROM student_class WHERE student_id = ?";
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setString(1, teacherName);
+            pstmt.setLong(1, id);
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                Class aClass = new Class();
-                // Preencher o objeto 'aClass' com os dados da consulta
-
-
-                classes.add(aClass);
+                Class newClass = getById(rs.getLong("class_id"));
+                classes.add(newClass);
             }
+
+            return classes;
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return classes;
+        return null;
+    }
+
+    public List<Class> findClassByTeacher(long id) {
+        List<Class>  classes = new ArrayList<>();
+        String sql = "SELECT * FROM class WHERE teacher_id = ?";
+
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setLong(1, id);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Class aClass = new Class();
+
+                aClass.setId(rs.getLong("id"));
+                aClass.setLocal(rs.getString("local"));
+                aClass.setPeriod(rs.getString("semester"));
+                aClass.setStatus(ClassStatus.valueOf(rs.getString("status")));
+
+                Teacher teacher = teacherDAO.getById(rs.getLong("teacher_id"));
+                Timetable timetable = timetableDAO.getById(rs.getLong("timetable_id"));
+                Discipline discipline = disciplineDAO.getById(rs.getLong("discipline_id"));
+
+                aClass.setTeacher(teacher);
+                aClass.setTimetable(timetable);
+                aClass.setDiscipline(discipline);
+
+                ArrayList<Student> students = studentDAO.findStudentsByClass(aClass.getId());
+                aClass.setStudents(students);
+
+                classes.add(aClass);
+            }
+
+            return classes;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

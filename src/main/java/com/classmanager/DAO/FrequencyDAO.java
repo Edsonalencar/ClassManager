@@ -30,9 +30,9 @@ public class FrequencyDAO extends BaseDAO {
                 if (generatedKeys.next()) {
                     int generatedId = generatedKeys.getInt(1);
                     frequency.setId((long) generatedId);
-
-                    return frequency;
                 }
+
+                return frequency;
             }
         } catch (SQLException e) {
             e.printStackTrace();

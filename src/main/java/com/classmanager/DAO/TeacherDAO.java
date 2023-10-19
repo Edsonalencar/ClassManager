@@ -36,7 +36,7 @@ public class TeacherDAO extends BaseDAO {
             }
             else teacher.setAddress(addressDAO.create(teacher.getAddress()));
 
-            Usuario user = new Usuario(teacher.getUser().getLogin(),teacher.getUser().getSenha() , RoleType.TEACHER);
+            Usuario user = new Usuario(teacher.getUser().getLogin(), teacher.getUser().getSenha(), RoleType.TEACHER);
             Usuario newUser = usuarioDAO.register(user);
 
             pstmt.setLong(3, teacher.getAddress().getId());
@@ -49,9 +49,9 @@ public class TeacherDAO extends BaseDAO {
                     int generatedId = generatedKeys.getInt(1);
                     teacher.setId((long) generatedId);
                     teacher.setUser(newUser);
-
-                    return teacher;
                 }
+
+                return teacher;
             }
         } catch (SQLException e) {
             e.printStackTrace();

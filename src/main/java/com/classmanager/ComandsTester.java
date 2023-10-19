@@ -3,10 +3,7 @@ package com.classmanager;
 import com.classmanager.DAO.*;
 import com.classmanager.enums.DisciplineStatus;
 import com.classmanager.enums.RoleType;
-import com.classmanager.model.Address;
-import com.classmanager.model.Discipline;
-import com.classmanager.model.Student;
-import com.classmanager.model.Usuario;
+import com.classmanager.model.*;
 
 import java.sql.Connection;
 import java.util.List;
@@ -22,12 +19,14 @@ public class ComandsTester {
         AddressDAO addressDAO = new AddressDAO();
         StudentDAO studentDAO = new StudentDAO();
         UsuarioDAO userDAO = new UsuarioDAO();
+        TeacherDAO teacherDAO = new TeacherDAO();
 
         Address address = new Address("Mossoró", "RN", "Centro", 89);
-        Usuario user = new Usuario("edson", "pedro789");
-        Student student = new Student("Edson Alencar", "201710802660", address, user);
+        Usuario user = new Usuario("Professor_28", "123456");
+        Teacher teacher = new Teacher("Edson Alencar Professor", "13046133480", address, user);
 
-        Usuario login = userDAO.loginUser(user.getLogin(), user.getSenha());
-        System.out.println(studentDAO.findStudentsByUser(login));
+        Teacher newTeacher = teacherDAO.register(teacher);
+
+        System.out.println(newTeacher);
     }
 }

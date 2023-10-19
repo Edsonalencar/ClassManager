@@ -51,9 +51,9 @@ public class StudentDAO extends BaseDAO {
                     int generatedId = generatedKeys.getInt(1);
                     student.setId((long) generatedId);
                     student.setUser(newUser);
-
-                    return student;
                 }
+
+                return student;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -162,37 +162,6 @@ public class StudentDAO extends BaseDAO {
         return null;
     }
 
-    public List<Student> findStudentsByClass(Long classId) {
-        List<Student> students = new ArrayList<>();
-        String sql = "SELECT s.* FROM student s " +
-                "INNER JOIN student_class sc ON s.id = sc.student_id " +
-                "WHERE sc.class_id = ?";
-
-        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setLong(1, classId);
-            ResultSet rs = pstmt.executeQuery();
-
-            while (rs.next()) {
-                Student student = new Student();
-                student.setId(rs.getLong("id"));
-                student.setName(rs.getString("name"));
-                student.setCode(rs.getString("code"));
-
-                Address address = addressDAO.getById(rs.getLong("address_id"));
-                Usuario user = usuarioDAO.getById(rs.getLong("usuario_id"));
-
-                student.setAddress(address);
-                student.setUser(user);
-
-                students.add(student);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return students;
-    }
-
     public List<Student> findStudentsByName(String studentName) {
         List<Student> students = new ArrayList<>();
         String sql = "SELECT * FROM student WHERE name = ?";
@@ -241,6 +210,27 @@ public class StudentDAO extends BaseDAO {
 
                 return  student;
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public ArrayList<Student> findStudentsByClass(long id) {
+        ArrayList<Student>  students = new ArrayList<>();
+        String sql = "SELECT student_id FROM student_class WHERE class_id = ?";
+
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setLong(1, id);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Student student = getById(rs.getLong("student_id"));
+                students.add(student);
+            }
+
+            return students;
         } catch (SQLException e) {
             e.printStackTrace();
         }
