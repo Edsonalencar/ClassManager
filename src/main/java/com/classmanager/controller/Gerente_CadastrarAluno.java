@@ -85,7 +85,11 @@ public class Gerente_CadastrarAluno implements Initializable {
 				&& numero != 0) {
 			Usuario user = new Usuario(login, senha);
 			Student aluno = new Student(nome, ""+mat, end, user);
+
+			daoAluno.register(aluno);
+
 			Telas.Gerente_TelaAlunos();
+			
 		}
 		else {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -132,7 +136,8 @@ public class Gerente_CadastrarAluno implements Initializable {
 		Telas.telaLogin();
 	}
 	public void autenticar(ActionEvent event) throws Exception {
-		Telas.Gerente_TelaInicial();
+		System.out.println("clicou");
+		handle(event);
 	}
 
 }

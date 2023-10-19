@@ -24,7 +24,7 @@ public class Telas extends Application{
     public void start(Stage primaryStage) throws Exception {
         setPrimaryStage(primaryStage);
         primaryStage.setTitle("Sequence");
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
         primaryStage.show();
         telaLogin();
     }

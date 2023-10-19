@@ -75,6 +75,18 @@ public class TeacherDAO extends BaseDAO {
             e.printStackTrace();
         }
     }
+    
+    public void delete(Long id) {
+        String sql = "DELETE FROM teacher WHERE id = ?";
+
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setLong(1, id);
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public Teacher getById(long id) {
         String sql = "SELECT * FROM teacher WHERE id = ?;";

@@ -76,6 +76,18 @@ public class StudentDAO extends BaseDAO {
             e.printStackTrace();
         }
     }
+    
+    public void delete(Long id) {
+        String sql = "DELETE FROM student WHERE id = ?";
+
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setLong(1, id);
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public List<Student>  getAll() {
         String sql = "SELECT * FROM student;";

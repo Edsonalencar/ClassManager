@@ -30,9 +30,15 @@ import static java.lang.System.out;
 public class Gerente_TelaDisciplinas implements Initializable {
 	
 	public DisciplineDAO daoDados = new DisciplineDAO();
+	private String searchField = "";
+	private String searchCode = "";
+	private DisciplineStatus disciplineStatus = DisciplineStatus.ACTIVE;
+
+	List<Discipline> disciplineList = new ArrayList<>();
 
 	@FXML TextField CampoBuscar;
-	@FXML 
+	@FXML TextField CampoCodigo;
+	@FXML
 	private RadioButton BotãoRadioAtiva, BotãoRadioInativa;
 	@FXML 
 	private TableView<Discipline> TabelaDisciplinas;
@@ -83,39 +89,23 @@ public class Gerente_TelaDisciplinas implements Initializable {
 	
 	@FXML
 	private void getStatus(ActionEvent event) {
-		if (BotãoRadioAtiva.isSelected()) {
-			List<Discipline> s = new ArrayList<>();
-			for(Discipline d : todos ) {
-				if (d.getStatus().equals(DisciplineStatus.ACTIVE)){
-					out.println(d.getId());
-					out.println(d.getName());
-					out.println(d.getStatus());
-					s.add(d);
-				}
-			}
-			ObservableList<Discipline> sObs = FXCollections.observableArrayList();
-			sObs.addAll(s);
+		List<Discipline> result = new ArrayList<>();
 
-			TabelaDisciplinas.setItems(sObs);
-		}
-		else if (BotãoRadioInativa.isSelected()) {
-			List<Discipline> s = new ArrayList<>();
-			for(Discipline d : todos ) {
-				if (d.getStatus().equals(DisciplineStatus.DESABLED)){
-					out.println(d.getId());
-					out.println(d.getName());
-					out.println(d.getStatus());
-					s.add(d);
-				}
-			}
-			ObservableList<Discipline> sObs = FXCollections.observableArrayList();
-			sObs.addAll(s);
+		if (BotãoRadioAtiva.isSelected())
+			result = daoDados.getByStatus(DisciplineStatus.ACTIVE);
+		 else
+			 result = daoDados.getByStatus(DisciplineStatus.DESABLED);
 
-			TabelaDisciplinas.setItems(sObs);
-		}
+		out.println(result);
+
+		ObservableList<Discipline> resultObs = FXCollections.observableArrayList();
+		resultObs.addAll(result);
+
+		TabelaDisciplinas.setItems(resultObs);
 	}
+
 	@FXML
-	public void onSearchKeyReleased(KeyEvent event) throws Exception {
+	public void onSearchKeyReleased2(KeyEvent event) throws Exception {
 		String busca = CampoBuscar.getText().toLowerCase();
 		if (!busca.isEmpty()) {
 			List<Discipline> result = new ArrayList<>();
@@ -135,7 +125,7 @@ public class Gerente_TelaDisciplinas implements Initializable {
 			TabelaDisciplinas.setItems(todos);
 		}
 	}
-	
+
 	public void telaInicio(ActionEvent event) throws Exception {
 		Telas.Gerente_TelaInicial();
 	}

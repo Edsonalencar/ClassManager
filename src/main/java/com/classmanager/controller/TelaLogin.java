@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 public class TelaLogin {
     @FXML private Label LabelErro;
     @FXML private TextField CampoUsuario;
-    @FXML private TextField CampoSenha;
+    @FXML private PasswordField CampoSenha;
     
     public void autenticar(ActionEvent event) throws Exception{
         System.out.println("Chegou na tela de login!");

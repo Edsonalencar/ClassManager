@@ -91,6 +91,6 @@ public class Student {
 				", name='" + name + '\'' +
 				", code='" + code + '\'' +
 				", address=" + address +
-				'}';
+				'}' + "\n";
 	}
 }

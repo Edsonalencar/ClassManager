@@ -179,14 +179,13 @@ public class DisciplineDAO extends BaseDAO {
         return disciplines;
     }
 
-    public List<Discipline>  getByNameOrCodeOrStatus(String name, String code, DisciplineStatus status) {
+    public List<Discipline>  getByNameOrCodeOrStatus(String name, DisciplineStatus status) {
         List<Discipline> disciplines = new ArrayList<>();
-        String sql = "SELECT * FROM discipline WHERE name LIKE ? OR code LIKE ? OR status LIKE ?;";
+        String sql = "SELECT * FROM discipline WHERE name LIKE ? AND status LIKE ?;";
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setString(1,  "%" + name + "%");
-            pstmt.setString(2,  "%" + code + "%");
-            pstmt.setString(3,  "%" + status + "%");
+            pstmt.setString(2,  "%" + status + "%");
 
             ResultSet rs = pstmt.executeQuery();
 

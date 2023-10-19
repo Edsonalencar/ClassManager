@@ -77,6 +77,6 @@ public class Discipline {
                 ", name='" + name + '\'' +
                 ", code='" + code + '\'' +
                 ", status=" + status +
-                '}';
+                '}' + "\n";
     }
 }
