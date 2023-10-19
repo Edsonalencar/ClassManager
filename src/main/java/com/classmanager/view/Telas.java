@@ -94,11 +94,8 @@ public class Telas extends Application{
     }
     public static void Gerente_TelaCadastroDisciplina() throws Exception{
         Parent root = FXMLLoader.load(Telas.class.getResource("VE/Gerente_TelaCadastroDisciplina.fxml"));
-        Stage popupStage = new Stage();
-        popupStage.initModality(Modality.APPLICATION_MODAL);
-        Scene popupScene = new Scene(root);
-        popupStage.setScene(popupScene);
-        popupStage.showAndWait();
+        Scene cena = new Scene(root);
+        primaryStage.setScene(cena);
     }
     public static void Gerente_TelaDisciplina() throws Exception{
         Parent root = FXMLLoader.load(Telas.class.getResource("VE/Gerente_TelaDisciplinas.fxml"));
