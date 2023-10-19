@@ -74,7 +74,7 @@ public class Telas extends Application{
         Scene cena = new Scene(root);
         primaryStage.setScene(cena);
     }
-    public static void Gerente_ShowProfessor(Long id) throws Exception{
+    public static void Gerente_ShowProfessor() throws Exception{
         Parent root = FXMLLoader.load(Telas.class.getResource("VE/Gerente_ShowProfessor.fxml"));
         Scene cena = new Scene(root);
         primaryStage.setScene(cena);

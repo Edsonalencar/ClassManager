@@ -1,5 +1,6 @@
 package com.classmanager.controller;
 
+import com.classmanager.model.Student;
 import com.classmanager.view.Telas;
 import com.classmanager.model.Discipline;
 
@@ -20,6 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 
 import javax.swing.*;
 
@@ -29,7 +31,7 @@ public class Gerente_TelaDisciplinas implements Initializable {
 	
 	public DisciplineDAO daoDados = new DisciplineDAO();
 
-	
+	@FXML TextField CampoBuscar;
 	@FXML 
 	private RadioButton BotãoRadioAtiva, BotãoRadioInativa;
 	@FXML 
@@ -62,7 +64,7 @@ public class Gerente_TelaDisciplinas implements Initializable {
 			for(Discipline d : lista ) {
 				out.println(d.getId());
 				out.println(d.getName());
-				out.println(d.getCode());
+				out.println(d.getStatus());
 			}
 	    }catch(Exception e){
 	        e.printStackTrace();
@@ -79,12 +81,58 @@ public class Gerente_TelaDisciplinas implements Initializable {
 	    
 	}
 	
+	@FXML
 	private void getStatus(ActionEvent event) {
 		if (BotãoRadioAtiva.isSelected()) {
-			//PREENCHE O CAMPO DE STATUS DA DISCIPLINA NO BANCO DE DADOS COMO "ATIVA"
+			List<Discipline> s = new ArrayList<>();
+			for(Discipline d : todos ) {
+				if (d.getStatus().equals(DisciplineStatus.ACTIVE)){
+					out.println(d.getId());
+					out.println(d.getName());
+					out.println(d.getStatus());
+					s.add(d);
+				}
+			}
+			ObservableList<Discipline> sObs = FXCollections.observableArrayList();
+			sObs.addAll(s);
+
+			TabelaDisciplinas.setItems(sObs);
 		}
 		else if (BotãoRadioInativa.isSelected()) {
-			//PREENCHE O CAMPO DE STATUS DA DISCIPLINA NO BANCO DE DADOS COMO "INATIVA"
+			List<Discipline> s = new ArrayList<>();
+			for(Discipline d : todos ) {
+				if (d.getStatus().equals(DisciplineStatus.DESABLED)){
+					out.println(d.getId());
+					out.println(d.getName());
+					out.println(d.getStatus());
+					s.add(d);
+				}
+			}
+			ObservableList<Discipline> sObs = FXCollections.observableArrayList();
+			sObs.addAll(s);
+
+			TabelaDisciplinas.setItems(sObs);
+		}
+	}
+	@FXML
+	public void onSearchKeyReleased(KeyEvent event) throws Exception {
+		String busca = CampoBuscar.getText().toLowerCase();
+		if (!busca.isEmpty()) {
+			List<Discipline> result = new ArrayList<>();
+
+			for (Discipline d : todos) {
+				if(d.getName().toLowerCase().contains(busca)) {
+					result.add(d);
+				}
+			}
+			ObservableList<Discipline> resultObs = FXCollections.observableArrayList();
+			resultObs.addAll(result);
+
+			TabelaDisciplinas.setItems(resultObs);
+			out.println(busca);
+		}
+		else {
+			TabelaDisciplinas.setItems(todos);
 		}
 	}
 	

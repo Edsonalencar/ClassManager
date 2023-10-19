@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class Gerente_TelaCadastroDisciplina implements Initializable {
-	
+
 	@FXML
 	private TextField CampoNomeDisciplina;
 	@FXML private ChoiceBox<String> ChoiceBoxStatus;
@@ -30,19 +30,27 @@ public class Gerente_TelaCadastroDisciplina implements Initializable {
 		ChoiceBoxStatus.setOnAction(this::getUF);
 		ChoiceBoxStatus.getSelectionModel().selectFirst();
 	}
-	
+
 	private void getUF(ActionEvent event) {Status = ChoiceBoxStatus.getValue();}
-	
+
 	public void telaDisciplina(ActionEvent event) throws Exception {
 		Telas.Gerente_TelaDisciplina();
 	}
 	public void autenticar(ActionEvent event) throws Exception {
-		if (parentStage != null && !CampoNomeDisciplina.getText().isEmpty() && !Status.equals("-")) {
+		if (!CampoNomeDisciplina.getText().isEmpty() && !Status.equals("-")) {
 			DisciplineDAO disciplineDAO = new DisciplineDAO();
-			Discipline discipline = new Discipline(CampoNomeDisciplina.getText(), DisciplineStatus.valueOf(Status.toUpperCase()));
+			DisciplineStatus s;
+			if (Status.equals("Ativa")){
+				s = DisciplineStatus.ACTIVE;
+			}
+			else{
+				s = DisciplineStatus.DESABLED;
+			}
+
+			String nome = CampoNomeDisciplina.getText();
+			Discipline discipline = new Discipline(nome,s);
 			disciplineDAO.register(discipline);
 
-			parentStage.close();
 			Telas.Gerente_TelaInicial();
 		}
 		else {
