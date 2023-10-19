@@ -51,9 +51,9 @@ public class StudentDAO extends BaseDAO {
                     int generatedId = generatedKeys.getInt(1);
                     student.setId((long) generatedId);
                     student.setUser(newUser);
-
-                    return student;
                 }
+
+                return student;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -63,14 +63,14 @@ public class StudentDAO extends BaseDAO {
     }
 
     public void update(Student student) {
-        String sql = "UPDATE student SET name = ?, code = ?, address_id = ? WHERE id = ?";
+        String sql = "UPDATE student SET name = ?, code = ? WHERE id = ?";
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setString(1, student.getName());
             pstmt.setString(2, student.getCode());
-            pstmt.setLong(3, student.getAddress().getId());
-            pstmt.setLong(4, student.getId());
+            pstmt.setLong(3, student.getId());
 
+            addressDAO.update(student.getAddress());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -134,18 +134,15 @@ public class StudentDAO extends BaseDAO {
         return students;
     }
 
-    public List<Student> findStudentsByClass(Long classId) {
-        List<Student> students = new ArrayList<>();
-        String sql = "SELECT s.* FROM student s " +
-                "INNER JOIN student_class sc ON s.id = sc.student_id " +
-                "WHERE sc.class_id = ?";
+    public Student getById(Long id) {
+        Student student = new Student();
+        String sql = "SELECT * FROM student WHERE id = ?";
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setLong(1, classId);
+            pstmt.setLong(1, id);
             ResultSet rs = pstmt.executeQuery();
 
-            while (rs.next()) {
-                Student student = new Student();
+            if (rs.next()) {
                 student.setId(rs.getLong("id"));
                 student.setName(rs.getString("name"));
                 student.setCode(rs.getString("code"));
@@ -156,13 +153,13 @@ public class StudentDAO extends BaseDAO {
                 student.setAddress(address);
                 student.setUser(user);
 
-                students.add(student);
+                return  student;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return students;
+        return null;
     }
 
     public List<Student> findStudentsByName(String studentName) {
@@ -213,6 +210,27 @@ public class StudentDAO extends BaseDAO {
 
                 return  student;
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public ArrayList<Student> findStudentsByClass(long id) {
+        ArrayList<Student>  students = new ArrayList<>();
+        String sql = "SELECT student_id FROM student_class WHERE class_id = ?";
+
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setLong(1, id);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Student student = getById(rs.getLong("student_id"));
+                students.add(student);
+            }
+
+            return students;
         } catch (SQLException e) {
             e.printStackTrace();
         }

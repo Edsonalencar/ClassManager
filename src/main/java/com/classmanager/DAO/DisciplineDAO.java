@@ -10,19 +10,22 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
 
 public class DisciplineDAO extends BaseDAO {
     private Connection con = getConection();
 
     public void register(Discipline discipline) {
-        String sql = "INSERT INTO discipline (name, code, status) VALUES (?, ?, ?);";
+        String sql = "INSERT INTO discipline (name, status, code) VALUES (?, ?, ?);";
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setString(1, discipline.getName());
-            pstmt.setString(2, discipline.getCode());
-            pstmt.setString(3, discipline.getStatus().toString());
+            pstmt.setString(2, discipline.getStatus().toString());
+            pstmt.setString(3, generateDisciplinaCode());
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -79,6 +82,29 @@ public class DisciplineDAO extends BaseDAO {
         }
 
         return disciplines;
+    }
+
+    public Discipline getById(long id) {
+        String sql = "SELECT * FROM discipline WHERE id = ?;";
+        Discipline discipline = new Discipline();
+
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setLong(1,  id);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                discipline.setId(rs.getLong("id"));
+                discipline.setName(rs.getString("name"));
+                discipline.setCode(rs.getString("code"));
+                discipline.setStatus(DisciplineStatus.valueOf(rs.getString("status")));
+
+                return discipline;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     public List<Discipline>  getByStatus(DisciplineStatus status) {
@@ -151,6 +177,18 @@ public class DisciplineDAO extends BaseDAO {
         }
 
         return disciplines;
+    }
+
+    public static String generateDisciplinaCode() {
+        Calendar calendar = Calendar.getInstance();
+        int anoAtual = calendar.get(Calendar.YEAR);
+
+        Random random = new Random();
+        int variavelNumerica = random.nextInt(10000);
+
+        String codigoDisciplina = String.format("%04d%05d", anoAtual, variavelNumerica);
+
+        return codigoDisciplina;
     }
 }
 

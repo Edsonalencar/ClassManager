@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Statement;
-public class UsuarioDAO extends BaseDAO{
+public class UsuarioDAO extends BaseDAO {
     private Connection con = getConection();
     public Usuario register(Usuario usuario) {
         String sql = "INSERT INTO usuario (login, senha, role) VALUES (?, ?, ?);";
@@ -32,9 +32,9 @@ public class UsuarioDAO extends BaseDAO{
                 if (generatedKeys.next()) {
                     int generatedId = generatedKeys.getInt(1);
                     usuario.setUserId((long) generatedId);
-
-                    return usuario;
                 }
+
+                return usuario;
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -56,7 +56,7 @@ public class Gerente_TelaAlunos implements Initializable {
 			             && event.getClickCount() == 2) {
 			            Student clickedRow = row.getItem();
 			            try {
-			            	Telas.Gerente_ShowAlunos(clickedRow.getId());
+			            	Telas.Gerente_ShowAlunos();
 						} catch (Exception e) {
 							out.println("Erro aqui");
 							e.printStackTrace();

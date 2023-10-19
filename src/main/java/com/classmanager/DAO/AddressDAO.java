@@ -28,8 +28,9 @@ public class AddressDAO extends BaseDAO {
                 if (generatedKeys.next()) {
                     int generatedId = generatedKeys.getInt(1);
                     address.setId((long) generatedId);
-                    return address;
                 }
+
+                return address;
             }
         } catch (SQLException e) {
             e.printStackTrace();

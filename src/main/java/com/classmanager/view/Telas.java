@@ -72,7 +72,7 @@ public class Telas extends Application{
         Scene cena = new Scene(root);
         primaryStage.setScene(cena);
     }
-    public static void Gerente_ShowAlunos(long id) throws Exception{
+    public static void Gerente_ShowAlunos() throws Exception{
         Parent root = FXMLLoader.load(Telas.class.getResource("VE/Gerente_ShowAlunos.fxml"));
         Scene cena = new Scene(root);
         primaryStage.setScene(cena);
