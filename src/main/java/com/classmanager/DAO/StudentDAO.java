@@ -90,12 +90,6 @@ public class StudentDAO extends BaseDAO {
                 student.setName(rs.getString("name"));
                 student.setCode(rs.getString("code"));
 
-                Address address = addressDAO.getById(rs.getLong("address_id"));
-                Usuario user = usuarioDAO.getById(rs.getLong("usuario_id"));
-
-                student.setAddress(address);
-                student.setUser(user);
-
                 students.add(student);
             }
         } catch (SQLException e) {
@@ -118,12 +112,6 @@ public class StudentDAO extends BaseDAO {
                 student.setId(rs.getLong("id"));
                 student.setName(rs.getString("name"));
                 student.setCode(rs.getString("code"));
-
-                Address address = addressDAO.getById(rs.getLong("address_id"));
-                Usuario user = usuarioDAO.getById(rs.getLong("usuario_id"));
-
-                student.setAddress(address);
-                student.setUser(user);
 
                 students.add(student);
             }
@@ -175,12 +163,6 @@ public class StudentDAO extends BaseDAO {
                 student.setId(rs.getLong("id"));
                 student.setName(rs.getString("name"));
                 student.setCode(rs.getString("code"));
-
-                Address address = addressDAO.getById(rs.getLong("address_id"));
-                Usuario user = usuarioDAO.getById(rs.getLong("usuario_id"));
-
-                student.setAddress(address);
-                student.setUser(user);
 
                 students.add(student);
             }
@@ -252,12 +234,6 @@ public class StudentDAO extends BaseDAO {
                 student.setId(rs.getLong("id"));
                 student.setName(rs.getString("name"));
                 student.setCode(rs.getString("code"));
-
-                Address address = addressDAO.getById(rs.getLong("address_id"));
-                Usuario user = usuarioDAO.getById(rs.getLong("usuario_id"));
-
-                student.setAddress(address);
-                student.setUser(user);
 
                 students.add(student);
             }

@@ -20,7 +20,6 @@ public class TeacherDAO extends BaseDAO {
     private Connection con = getConection();
     private AddressDAO addressDAO = new AddressDAO();
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
-    private ClassDAO classDAO = new ClassDAO();
 
     public Teacher register(Teacher teacher) {
         String sql = "INSERT INTO teacher (name, cpf, address_id, usuario_id) VALUES (?, ?, ?, ?)";
@@ -119,12 +118,6 @@ public class TeacherDAO extends BaseDAO {
                 teacher.setName(rs.getString("name"));
                 teacher.setCPF(rs.getString("cpf"));
 
-                Address address = addressDAO.getById(rs.getLong("address_id"));
-                Usuario user = usuarioDAO.getById(rs.getLong("usuario_id"));
-
-                teacher.setAddress(address);
-                teacher.setUser(user);
-
                 teachers.add(teacher);
             }
         } catch (SQLException e) {
@@ -147,12 +140,6 @@ public class TeacherDAO extends BaseDAO {
                 teacher.setId(rs.getLong("id"));
                 teacher.setName(rs.getString("name"));
                 teacher.setCPF(rs.getString("cpf"));
-
-                Address address = addressDAO.getById(rs.getLong("address_id"));
-                Usuario user = usuarioDAO.getById(rs.getLong("usuario_id"));
-
-                teacher.setAddress(address);
-                teacher.setUser(user);
 
                 teachers.add(teacher);
             }

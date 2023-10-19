@@ -15,6 +15,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.util.List;
@@ -24,8 +25,7 @@ public class TelaLogin {
     @FXML private Label LabelErro;
     @FXML private TextField CampoUsuario;
     @FXML private TextField CampoSenha;
-
-
+    
     public void autenticar(ActionEvent event) throws Exception{
         System.out.println("Chegou na tela de login!");
         System.out.println("Login: " + CampoUsuario.getText());

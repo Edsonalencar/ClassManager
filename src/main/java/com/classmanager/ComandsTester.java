@@ -21,11 +21,6 @@ public class ComandsTester {
         UsuarioDAO userDAO = new UsuarioDAO();
         TeacherDAO teacherDAO = new TeacherDAO();
 
-        Address address = new Address("Mossoró", "RN", "Centro", 89);
-        Usuario user = new Usuario("Professor_158", "123456");
-        Teacher teacher = new Teacher("Novo Professor", "13046133480", address, user);
-
-        Teacher newTeacher = teacherDAO.register(teacher);
-        System.out.println(newTeacher);
+        System.out.println(teacherDAO.getAll());
     }
 }
