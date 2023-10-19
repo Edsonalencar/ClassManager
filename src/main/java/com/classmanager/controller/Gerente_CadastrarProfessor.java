@@ -86,9 +86,6 @@ public class Gerente_CadastrarProfessor implements Initializable {
 		Address end = new Address(cidade, estado, bairro, numero);
 
 		Usuario u = new Usuario(login, senha);
-		UsuarioDAO usuDAO = new UsuarioDAO();
-		usuDAO.register(u);
-
 		Teacher teacher = new Teacher(nome, cpf, end, u);
 		TeacherDAO daoDados = new TeacherDAO();
 		daoDados.register(teacher);

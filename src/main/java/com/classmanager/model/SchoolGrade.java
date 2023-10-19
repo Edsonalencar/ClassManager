@@ -1,10 +1,11 @@
 package com.classmanager.model;
 
-public abstract class SchoolGrade {
+public class SchoolGrade {
 	private Long id;
 	private String period;
 	private int grade;
-
+	private Student student;
+	private Class aClass;
 
 	public SchoolGrade() {
 	}
@@ -13,6 +14,13 @@ public abstract class SchoolGrade {
 		setId(id);
 		setPeriod(period);
 		setGrade(grade);
+	}
+
+	public SchoolGrade(String period, int grade, Student student, Class aClass) {
+		setPeriod(period);
+		setGrade(grade);
+		setStudent(student);
+		setaClass(aClass);
 	}
 	public SchoolGrade(String period, int grade) {
 		setPeriod(period);
@@ -40,9 +48,20 @@ public abstract class SchoolGrade {
 		if (id != null && id >= 0)
 			this.id = id;
 	}
-	
-	public void update(SchoolGrade Sg) {
-		// Atualiza 
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+	public Class getaClass() {
+		return aClass;
+	}
+
+	public void setaClass(Class aClass) {
+		this.aClass = aClass;
 	}
 
 	@Override

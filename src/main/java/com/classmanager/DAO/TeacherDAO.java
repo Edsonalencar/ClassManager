@@ -3,6 +3,7 @@ package com.classmanager.DAO;
 import com.classmanager.enums.DisciplineStatus;
 import com.classmanager.enums.RoleType;
 import com.classmanager.model.Address;
+import com.classmanager.model.Class;
 import com.classmanager.model.Discipline;
 import com.classmanager.model.Teacher;
 import com.classmanager.model.Usuario;
@@ -19,6 +20,7 @@ public class TeacherDAO extends BaseDAO {
     private Connection con = getConection();
     private AddressDAO addressDAO = new AddressDAO();
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
+    private ClassDAO classDAO = new ClassDAO();
 
     public Teacher register(Teacher teacher) {
         String sql = "INSERT INTO teacher (name, cpf, address_id, usuario_id) VALUES (?, ?, ?, ?)";
@@ -132,25 +134,35 @@ public class TeacherDAO extends BaseDAO {
         return teachers;
     }
 
-    public Teacher findTeacherByName(String teacherName) {
-        String sql = "SELECT * FROM teacher WHERE name = ?";
-        Teacher teacher = null;
+    public List<Teacher> findTeacherByName(String name) {
+        String sql = "SELECT * FROM teacher WHERE name LIKE ?";
+        List<Teacher> teachers = new ArrayList<>();
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setString(1, teacherName);
+            pstmt.setString(1, "%" + name + "%");
             ResultSet rs = pstmt.executeQuery();
 
-            if (rs.next()) {
-                teacher = new Teacher();
+            while (rs.next()) {
+                Teacher teacher = new Teacher();
                 teacher.setId(rs.getLong("id"));
                 teacher.setName(rs.getString("name"));
                 teacher.setCPF(rs.getString("cpf"));
+
+                Address address = addressDAO.getById(rs.getLong("address_id"));
+                Usuario user = usuarioDAO.getById(rs.getLong("usuario_id"));
+
+                teacher.setAddress(address);
+                teacher.setUser(user);
+
+                teachers.add(teacher);
             }
+
+            return teachers;
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return teacher;
+        return null;
     }
 }
 
