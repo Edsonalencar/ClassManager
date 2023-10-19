@@ -102,9 +102,12 @@
          </font>
       </Button>
       <TableView fx:id="TabelaParticipantes" layoutX="81.0" layoutY="371.0" prefHeight="155.0" prefWidth="660.0">
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+            <TableColumn fx:id="ColunaNome" prefWidth="50.0" text="Nome"/>
+            <TableColumn fx:id="ColunaMatricula" prefWidth="50.0" text="Matrícula"/>
         </columns>
       </TableView>
    </children>
