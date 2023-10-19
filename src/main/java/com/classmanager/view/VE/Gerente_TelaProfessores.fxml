@@ -19,16 +19,19 @@
          </font>
       </Text>
       <TextField fx:id="CampoBuscar" layoutX="54.0" layoutY="152.0" prefHeight="25.0" prefWidth="630.0" promptText="Buscar" />
-      <TableView fx:id="TableaProfessores" editable="true" layoutX="54.0" layoutY="188.0" prefHeight="390.0" prefWidth="732.0">
-        <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
-        </columnResizePolicy>
-        <columns>
-            <TableColumn fx:id="ColunaNome" text="Nome"/>
-            <TableColumn fx:id="ColunaCPF" text="CPF"/>
-            <TableColumn fx:id="ColunaEspecialidade" text="Especialidade"/>
-        </columns>
-      </TableView>
+	  <ScrollPane layoutX="52" layoutY="185">
+            <content>	
+		      <TableView fx:id="TabelaProfessores" editable="true" layoutX="54.0" layoutY="188.0" prefHeight="390.0" prefWidth="732.0">
+		        <columnResizePolicy>
+		            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+		        </columnResizePolicy>
+		        <columns>
+		            <TableColumn fx:id="ColunaNome" text="Nome"/>
+		            <TableColumn fx:id="ColunaCPF" text="CPF"/>
+		        </columns>
+		      </TableView>
+			</content>
+	  </ScrollPane>			      
       <Button fx:id="BotãoAdicionar" layoutX="700.0" layoutY="151.0" mnemonicParsing="false" onAction="#addProf" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #00ADEF;" text="Adicionar" textFill="WHITE" />
       <Button fx:id="BotãoSair" layoutX="794.0" layoutY="4.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #3871C1;" text="Sair" textFill="WHITE" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="35.0" layoutY="33.0" stroke="#f7f7f7" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" style="-fx-effect: dropshadow(gaussian,rgba(0,0,0,0.3),0.5,0.3,0,1);" width="840.0" AnchorPane.bottomAnchor="532.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0" />
