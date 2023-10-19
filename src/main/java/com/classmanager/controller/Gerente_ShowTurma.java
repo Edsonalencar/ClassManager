@@ -2,8 +2,12 @@ package com.classmanager.controller;
 
 import com.classmanager.view.Telas;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 
-public class Gerente_ShowTurma {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class Gerente_ShowTurma implements Initializable {
     public void telaProfessor(ActionEvent event) throws Exception {
         Telas.Gerente_TelaProfessores();
     }
@@ -21,5 +25,10 @@ public class Gerente_ShowTurma {
     }
     public void telaAluno(ActionEvent event) throws Exception {
         Telas.Gerente_TelaAlunos();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 }
