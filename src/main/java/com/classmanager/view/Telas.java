@@ -1,5 +1,7 @@
 package com.classmanager.view;
 
+import com.classmanager.model.Student;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -70,7 +72,7 @@ public class Telas extends Application{
         Scene cena = new Scene(root);
         primaryStage.setScene(cena);
     }
-    public static void Gerente_ShowAlunos() throws Exception{
+    public static void Gerente_ShowAlunos(long id) throws Exception{
         Parent root = FXMLLoader.load(Telas.class.getResource("VE/Gerente_ShowAlunos.fxml"));
         Scene cena = new Scene(root);
         primaryStage.setScene(cena);
@@ -92,11 +94,8 @@ public class Telas extends Application{
     }
     public static void Gerente_TelaCadastroDisciplina() throws Exception{
         Parent root = FXMLLoader.load(Telas.class.getResource("VE/Gerente_TelaCadastroDisciplina.fxml"));
-        Stage popupStage = new Stage();
-        popupStage.initModality(Modality.APPLICATION_MODAL);
-        Scene popupScene = new Scene(root);
-        popupStage.setScene(popupScene);
-        popupStage.showAndWait();
+        Scene cena = new Scene(root);
+        primaryStage.setScene(cena);
     }
     public static void Gerente_TelaDisciplina() throws Exception{
         Parent root = FXMLLoader.load(Telas.class.getResource("VE/Gerente_TelaDisciplinas.fxml"));

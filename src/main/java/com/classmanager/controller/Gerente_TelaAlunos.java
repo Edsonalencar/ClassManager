@@ -4,8 +4,10 @@ import static java.lang.System.out;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 import com.classmanager.DAO.StudentDAO;
 import com.classmanager.model.Student;
@@ -17,19 +19,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 
 public class Gerente_TelaAlunos implements Initializable {
 	
 	public StudentDAO daoDados = new StudentDAO();
 
-	@FXML 
-	private TableView<Student> TabelaAlunos;
-	@FXML 
-	private TableColumn<Student, String> ColunaNome;
-	@FXML 
-	private TableColumn<Student, String> ColunaMatricula;
+	@FXML private TableView<Student> TabelaAlunos;
+	@FXML private TableColumn<Student, String> ColunaNome;
+	@FXML private TableColumn<Student, String> ColunaMatricula;
+	@FXML private TextField CampoBuscar;
     
 	ObservableList<Student> lista = FXCollections.observableArrayList();
 	ObservableList<Student> todos = FXCollections.observableArrayList();
@@ -42,16 +46,40 @@ public class Gerente_TelaAlunos implements Initializable {
 		}
 		catch(Exception e){
 	        e.printStackTrace();
-	        out.println("Error nessa porraa");
+	        out.println("Erro aqui.");
+	    }
+		try {
+			TabelaAlunos.setRowFactory(tv -> {
+			    TableRow<Student> row = new TableRow<>();
+			    row.setOnMouseClicked(event -> {
+			        if (! row.isEmpty() && event.getButton()==MouseButton.PRIMARY 
+			             && event.getClickCount() == 2) {
+			            Student clickedRow = row.getItem();
+			            try {
+			            	Telas.Gerente_ShowAlunos(clickedRow.getId());
+						} catch (Exception e) {
+							out.println("Erro aqui");
+							e.printStackTrace();
+						};
+			        }
+			    });
+			    return row ;
+			});
+		}catch(Exception e){
+	        e.printStackTrace();
+	        out.println("Error on Building Data");
 	    }
 		
 		List<Student> alunos = new ArrayList<>();
 	    try{
 	    	alunos = daoDados.getAll();
-			for(Student d : lista ) {
-				out.println(d.getId());
-				out.println(d.getName());
-				out.println(d.getCode());
+			for(Student d : alunos ) {
+				String nomeAlterar = d.getName();
+				String Capitalizado = Arrays.stream(nomeAlterar.split(" "))
+		                .map(word -> word.substring(0, 1).toUpperCase() + word.substring(1))
+		                .collect(Collectors.joining(" "));
+		        System.out.println(Capitalizado);
+		        d.setName(Capitalizado);
 			}
 	    }catch(Exception e){
 	        e.printStackTrace();
@@ -66,6 +94,28 @@ public class Gerente_TelaAlunos implements Initializable {
 	    	System.out.println("Erro.");
 	    }
 	    
+	}
+	
+	@FXML
+	public void onSearchKeyReleased(KeyEvent event) throws Exception {
+		String busca = CampoBuscar.getText().toLowerCase();
+		if (!busca.isEmpty()) {
+			List<Student> result = new ArrayList<>();
+			
+			for (Student s : todos) {
+				if(s.getName().toLowerCase().contains(busca)) {
+					result.add(s);
+				}
+			}
+			ObservableList<Student> resultObs = FXCollections.observableArrayList();
+			resultObs.addAll(result);
+			
+	    	TabelaAlunos.setItems(resultObs);
+			out.println(busca);
+		}
+		else {
+			TabelaAlunos.setItems(todos);
+		}
 	}
 	
 	public void telaProfessor(ActionEvent event) throws Exception {

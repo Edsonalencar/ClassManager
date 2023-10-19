@@ -1,8 +1,14 @@
 package com.classmanager.controller;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import com.classmanager.DAO.DisciplineDAO;
+import com.classmanager.DAO.StudentDAO;
+import com.classmanager.DAO.TeacherDAO;
+import com.classmanager.model.Student;
 import com.classmanager.view.Telas;
 
 import javafx.event.ActionEvent;
@@ -13,44 +19,36 @@ import javafx.scene.control.TextField;
 
 public class Gerente_CadastrarTurma implements Initializable {
 	
-	@FXML
-	private ChoiceBox<String> ChoiceBoxParticipantes;
-	private ChoiceBox<String> ChoiceBoxProfessores;
-	private ChoiceBox<String> ChoiceBoxDisciplinas;
-	private String[] alunos = {"-"}; //ATUALIZAR O VETOR COM OS ALUNOS NO BANCO DE DADOS
-	private String[] professores = {"-"}; //ATUALIZAR O VETOR COM OS PROFESSORES NO BANCO DE DADOS
-	private String[] disciplinas = {"-"}; //ATUALIZAR O VETOR COM AS DISCIPLINAS NO BANCO DE DADOS
+	StudentDAO daoAlunos = new StudentDAO();
+	TeacherDAO daoProfessores = new TeacherDAO();
+	DisciplineDAO daoDisciplinas = new DisciplineDAO();
+	private String traço = "-";
+	private String nome = "";
+
+	@FXML private ChoiceBox<String> ChoiceBoxParticipantes;
+	@FXML private ChoiceBox<String> ChoiceBoxProfessores;
+	@FXML private ChoiceBox<String> ChoiceBoxDisciplinas;
 	
+	List<Student> Alunos = daoAlunos.getAll();{
+	List<String> nomesParticipantes = new ArrayList<String>();
+	nomesParticipantes.add(traço);
+	for (Student s : Alunos) {
+		nomesParticipantes.add(s.getName());
+	}
 	
+	}
+	private void getPartChoiceBox(ActionEvent event) {
+		String Participante = ChoiceBoxParticipantes.getValue();
+		nome = Participante;
+	}
+
 	@Override
 	public void initialize(URL url, ResourceBundle resourcebundle) {
-		ChoiceBoxParticipantes.getItems().addAll(alunos);
-		ChoiceBoxParticipantes.setOnAction(this::getAluno);
+		//ChoiceBoxParticipantes.getItems().addAll(nomesParticipantes);
+		ChoiceBoxParticipantes.setOnAction(this::getPartChoiceBox);
 		ChoiceBoxParticipantes.getSelectionModel().selectFirst();
-		
-		//ChoiceBoxProfessores.getItems().addAll(professores);
-		//ChoiceBoxProfessores.setOnAction(this::getProfessor);
-		//ChoiceBoxProfessores.getSelectionModel().selectFirst();
-		
-		//ChoiceBoxDisciplinas.getItems().addAll(disciplinas);
-		//ChoiceBoxDisciplinas.setOnAction(this::getDisciplina);
-		//ChoiceBoxDisciplinas.getSelectionModel().selectFirst();
 	}
 	
-	private void getAluno(ActionEvent event) {
-		String al = ChoiceBoxParticipantes.getValue();
-		//IMPLEMENTAR NO BANCO DE DADOS: Valor no banco = al
-	}
-	
-	private void getProfessor(ActionEvent event) {
-		String prof = ChoiceBoxProfessores.getValue();
-		//IMPLEMENTAR NO BANCO DE DADOS: Valor no banco = prof
-	}
-	
-	private void getDisciplina(ActionEvent event) {
-		String disc = ChoiceBoxDisciplinas.getValue();
-		//IMPLEMENTAR NO BANCO DE DADOS: Valor no banco = disc
-	}
 	
 	public void telaProfessor(ActionEvent event) throws Exception {
 		Telas.Gerente_TelaProfessores();

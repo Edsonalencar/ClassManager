@@ -9,6 +9,7 @@ public class Teacher {
 	private String cpf;
 	private Address address;
 	private ArrayList<Class> classes;
+	private Usuario usuario;
 
 
 	public Teacher() {
@@ -36,7 +37,12 @@ public class Teacher {
 		setAddress(address);
 		setClasses(classes);
 	}
-
+	public Teacher(String name, String cpf, Address address, Usuario usuario) {
+		this.name = name;
+		this.cpf = cpf;
+		this.address = address;
+		this.usuario = usuario;
+	}
 
 	public String getName() {
         return name;
