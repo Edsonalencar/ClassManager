@@ -22,9 +22,9 @@ public class Gerente_TelaCadastroDisciplina implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourcebundle) {
-		ChoiceBoxStatus.getItems().addAll(estados);
-		ChoiceBoxStatus.setOnAction(this::getUF);
-		ChoiceBoxStatus.getSelectionModel().selectFirst();
+//		ChoiceBoxStatus.getItems().addAll(estados);
+//		ChoiceBoxStatus.setOnAction(this::getUF);
+//		ChoiceBoxStatus.getSelectionModel().selectFirst();
 	}
 	
 	private void getUF(ActionEvent event) {

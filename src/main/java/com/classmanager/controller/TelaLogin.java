@@ -1,5 +1,6 @@
 package com.classmanager.controller;
 
+import com.classmanager.enums.RoleType;
 import com.classmanager.model.Student;
 import com.classmanager.model.Teacher;
 import com.classmanager.model.Usuario;
@@ -22,7 +23,7 @@ import java.util.ResourceBundle;
 public class TelaLogin {
     @FXML private Label LabelErro;
     @FXML private TextField CampoUsuario;
-    @FXML private PasswordField CampoSenha;
+    @FXML private TextField CampoSenha;
 
 
     public void autenticar(ActionEvent event) throws Exception{

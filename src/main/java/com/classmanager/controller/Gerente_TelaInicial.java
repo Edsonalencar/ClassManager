@@ -52,8 +52,8 @@ public class Gerente_TelaInicial implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        NumeroAlunos.setText(""+nAlunos);
-        NumeroDisciplinas.setText(""+nDisciplinas);
+//        NumeroAlunos.setText(""+nAlunos);
+//        NumeroDisciplinas.setText(""+nDisciplinas);
 
     }
 	

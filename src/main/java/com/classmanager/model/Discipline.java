@@ -13,15 +13,17 @@ public class Discipline {
     public Discipline() {
     }
 
+    public Discipline(Long id) {
+        setId(id);
+    }
     public Discipline(Long id, String name, String code, DisciplineStatus status) {
         setId(id);
         setName(name);
         setCode(code);
         setStatus(status);
     }
-    public Discipline(String name, String code, DisciplineStatus status) {
+    public Discipline(String name, DisciplineStatus status) {
         setName(name);
-        setCode(code);
         setStatus(status);
     }
 

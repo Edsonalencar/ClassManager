@@ -14,6 +14,9 @@ public class Teacher {
 
 	public Teacher() {
 	}
+	public Teacher(Long id) {
+		setId(id);
+	}
 
 	public Teacher(Long id, Usuario user, String name, String cpf, Address address, ArrayList<Class> classes) {
 		setId(id);
@@ -23,18 +26,19 @@ public class Teacher {
 		setAddress(address);
 		setClasses(classes);
 	}
+	public Teacher(String name, String cpf, Address address, Usuario user) {
+		setName(name);
+		setCPF(cpf);
+		setAddress(address);
+		setUser(user);
+	}
 	public Teacher(String name, String cpf, Address address, ArrayList<Class> classes) {
 		setName(name);
 		setCPF(cpf);
 		setAddress(address);
 		setClasses(classes);
 	}
-	public Teacher(String name, String cpf, Address address, Usuario usuario) {
-		this.name = name;
-		this.cpf = cpf;
-		this.address = address;
-		this.usuario = usuario;
-	}
+
 
 	public String getName() {
         return name;

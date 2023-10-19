@@ -42,6 +42,7 @@ public class Gerente_CadastrarProfessor implements Initializable {
 
 	public void getUF(ActionEvent event) {
 		estado = ChoiceBoxUF.getValue();
+		//IMPLEMENTAR NO BANCO DE DADOS: Valor no banco = Estado
 	}
 	@Override
 	public void initialize(URL url, ResourceBundle resourcebundle) {

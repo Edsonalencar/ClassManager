@@ -34,7 +34,7 @@
          </font>
       </Label>
       <TextField fx:id="CampoUsuario" layoutX="263.0" layoutY="314.0" prefHeight="32.0" prefWidth="337.0" />
-      <PasswordField fx:id="CampoSenha" layoutX="263.0" layoutY="376.0" prefHeight="32.0" prefWidth="337.0" />
+      <TextField fx:id="CampoSenha" layoutX="263.0" layoutY="376.0" prefHeight="32.0" prefWidth="337.0" />
       <Button fx:id="BotãoEntrar" layoutX="263.0" layoutY="455.0" mnemonicParsing="false" onAction="#autenticar" prefHeight="37.0" prefWidth="337.0" style="-fx-background-color: #00ADEF;" text="Entrar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
