@@ -179,6 +179,35 @@ public class DisciplineDAO extends BaseDAO {
         return disciplines;
     }
 
+    public List<Discipline>  getByNameOrCodeOrStatus(String name, String code, DisciplineStatus status) {
+        List<Discipline> disciplines = new ArrayList<>();
+        String sql = "SELECT * FROM discipline WHERE name LIKE ? OR code LIKE ? OR status LIKE ?;";
+
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setString(1,  "%" + name + "%");
+            pstmt.setString(2,  "%" + code + "%");
+            pstmt.setString(3,  "%" + status + "%");
+
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Discipline discipline = new Discipline();
+                discipline.setId(rs.getLong("id"));
+                discipline.setName(rs.getString("name"));
+                discipline.setCode(rs.getString("code"));
+                discipline.setStatus(DisciplineStatus.valueOf(rs.getString("status")));
+
+                disciplines.add(discipline);
+            }
+
+            return disciplines;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     public static String generateDisciplinaCode() {
         Calendar calendar = Calendar.getInstance();
         int anoAtual = calendar.get(Calendar.YEAR);

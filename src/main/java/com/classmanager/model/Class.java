@@ -1,6 +1,7 @@
 package com.classmanager.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.classmanager.enums.ClassStatus;
 
@@ -11,7 +12,7 @@ public class Class {
     private String local;
     private String period;
     private ClassStatus status;
-    private ArrayList<Student> students;
+    private List<Student> students;
     private Teacher teacher;
 
     public Class() {}
@@ -61,10 +62,10 @@ public class Class {
     public void setStatus(ClassStatus status) {
         this.status = status;
     }
-    public ArrayList<Student> getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
-    public void setStudents(ArrayList<Student> students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
     }
 

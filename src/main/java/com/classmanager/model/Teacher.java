@@ -8,9 +8,6 @@ public class Teacher {
 	private String name;
 	private String cpf;
 	private Address address;
-	private ArrayList<Class> classes;
-	private Usuario usuario;
-
 
 	public Teacher() {
 	}
@@ -18,13 +15,13 @@ public class Teacher {
 		setId(id);
 	}
 
-	public Teacher(Long id, Usuario user, String name, String cpf, Address address, ArrayList<Class> classes) {
+	public Teacher(Long id, Usuario user, String name, String cpf, Address address) {
 		setId(id);
 		setUser(user);
 		setName(name);
 		setCPF(cpf);
 		setAddress(address);
-		setClasses(classes);
+
 	}
 	public Teacher(String name, String cpf, Address address, Usuario user) {
 		setName(name);
@@ -32,11 +29,10 @@ public class Teacher {
 		setAddress(address);
 		setUser(user);
 	}
-	public Teacher(String name, String cpf, Address address, ArrayList<Class> classes) {
+	public Teacher(String name, String cpf, Address address) {
 		setName(name);
 		setCPF(cpf);
 		setAddress(address);
-		setClasses(classes);
 	}
 
 	public String getName() {
@@ -68,13 +64,7 @@ public class Teacher {
 		if (address != null)
 			this.address = address;
 	}
-	public ArrayList<Class> getClasses() {
-		return this.classes;
-	}
-	public void setClasses(ArrayList<Class> classes){
-		if(!classes.isEmpty() && classes != null)
-			this.classes = classes;
-	}
+
 	public Long getId() {
 		return id;
 	}
@@ -107,7 +97,6 @@ public class Teacher {
 				", name='" + name + '\'' +
 				", cpf='" + cpf + '\'' +
 				", address=" + address +
-				", classes=" + classes +
 				'}';
 	}
 }

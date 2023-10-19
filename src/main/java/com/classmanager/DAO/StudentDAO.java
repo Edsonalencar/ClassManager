@@ -237,5 +237,39 @@ public class StudentDAO extends BaseDAO {
 
         return null;
     }
+
+    public List<Student> findStudentsByNameOrCode(String name, String code) {
+        ArrayList<Student>  students = new ArrayList<>();
+        String sql = "SELECT * FROM student WHERE name LIKE ? OR code LIKE ?;";
+
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setString(1, "%" + name + "%");
+            pstmt.setString(2, "%" + code + "%");
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Student student = new Student();
+                student.setId(rs.getLong("id"));
+                student.setName(rs.getString("name"));
+                student.setCode(rs.getString("code"));
+
+                Address address = addressDAO.getById(rs.getLong("address_id"));
+                Usuario user = usuarioDAO.getById(rs.getLong("usuario_id"));
+
+                student.setAddress(address);
+                student.setUser(user);
+
+                students.add(student);
+            }
+
+            return students;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+
 }
 
