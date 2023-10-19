@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 import com.classmanager.DAO.StudentDAO;
 import com.classmanager.model.Student;
 import com.classmanager.view.Telas;
+import com.classmanager.view.ArrayShow;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,7 +30,8 @@ import javafx.scene.input.MouseButton;
 public class Gerente_TelaAlunos implements Initializable {
 	
 	public StudentDAO daoDados = new StudentDAO();
-
+	public long idGuardar;
+	
 	@FXML private TableView<Student> TabelaAlunos;
 	@FXML private TableColumn<Student, String> ColunaNome;
 	@FXML private TableColumn<Student, String> ColunaMatricula;
@@ -56,6 +58,8 @@ public class Gerente_TelaAlunos implements Initializable {
 			             && event.getClickCount() == 2) {
 			            Student clickedRow = row.getItem();
 			            try {
+			            	idGuardar = clickedRow.getId();
+			            	ArrayShow.Guardar(idGuardar);
 			            	Telas.Gerente_ShowAlunos();
 						} catch (Exception e) {
 							out.println("Erro aqui");

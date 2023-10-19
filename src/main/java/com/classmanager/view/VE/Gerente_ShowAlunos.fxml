@@ -56,12 +56,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="LabelCPF" alignment="CENTER" layoutX="54.0" layoutY="391.0" prefHeight="17.0" prefWidth="200.0" text="CPF">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Label>
-      <Label fx:id="LabelEndereço" alignment="CENTER" layoutX="75.0" layoutY="408.0" prefHeight="46.0" prefWidth="157.0" text="Endereço" />
+      <Label fx:id="LabelEndereço" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="79.0" layoutY="391.0" prefHeight="123.0" prefWidth="150.0" text="Endereço" />
       <Button fx:id="BotãoTurmasAbertas" alignment="CENTER" layoutX="336.0" layoutY="157.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="144.0" style="-fx-background-color: 0;" text="Turmas Abertas">
          <font>
             <Font name="Verdana" size="14.0" />
@@ -77,7 +72,12 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="BotãoEmitirHistórico" alignment="CENTER" layoutX="635.0" layoutY="157.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: 0; -fx-border-color: #00ADEF;" text="Emitir Histórico" textFill="#00adef">
+      <Button fx:id="BotaoEditar" alignment="CENTER" layoutX="635.0" layoutY="157.0" mnemonicParsing="false" onAction="#edit" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: 0; -fx-border-color: #00ADEF;" text="Editar" textFill="#00adef">
+         <font>
+            <Font name="Verdana" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="BotaoExcluir" alignment="CENTER" layoutX="713.0" layoutY="157.0" mnemonicParsing="false" onAction="#del" prefHeight="30.0" prefWidth="72.0" style="-fx-background-color: 0; -fx-border-color: #ed0000;" text="Excluir" textFill="#ed0000">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>

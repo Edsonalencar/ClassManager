@@ -1,15 +1,12 @@
 package com.classmanager.view;
 
-import com.classmanager.model.Student;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Modality;
-import javafx.stage.Popup;
-import javafx.stage.PopupWindow;
 import javafx.stage.Stage;
+
+import javax.swing.*;
 
 public class Telas extends Application{
 
@@ -77,7 +74,7 @@ public class Telas extends Application{
         Scene cena = new Scene(root);
         primaryStage.setScene(cena);
     }
-    public static void Gerente_ShowProfessor() throws Exception{
+    public static void Gerente_ShowProfessor(Long id) throws Exception{
         Parent root = FXMLLoader.load(Telas.class.getResource("VE/Gerente_ShowProfessor.fxml"));
         Scene cena = new Scene(root);
         primaryStage.setScene(cena);

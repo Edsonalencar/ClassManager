@@ -14,14 +14,14 @@
 <AnchorPane fx:id="TelaInicialGerente" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.classmanager.controller.Gerente_CadastrarAluno">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="466.0" layoutX="31.0" layoutY="114.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.2" style="-fx-effect: dropshadow(gaussian,rgba(0,0,0,0.5),.1,0.5,1.5,0.5);" width="763.0" />
-      <TextField fx:id="CampoBairro" layoutX="567.0" layoutY="500.0" prefHeight="25.0" prefWidth="208.0" />
+      <TextField fx:id="CampoBairro" layoutX="566.0" layoutY="477.0" prefHeight="25.0" prefWidth="208.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3871c1" height="33.0" stroke="BLACK" strokeType="INSIDE" width="840.0" AnchorPane.bottomAnchor="567.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Text fill="WHITE" layoutX="56.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Class Manager" wrappingWidth="127.13671875">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="CampoNome" layoutX="282.0" layoutY="249.0" prefHeight="25.0" prefWidth="490.0" />
+      <TextField fx:id="CampoNome" layoutX="283.0" layoutY="274.0" prefHeight="25.0" prefWidth="490.0" />
       <Button fx:id="BotãoSair" layoutX="794.0" layoutY="4.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #3871C1;" text="Sair" textFill="WHITE" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="35.0" layoutY="33.0" stroke="#f7f7f7" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" style="-fx-effect: dropshadow(gaussian,rgba(0,0,0,0.3),0.5,0.3,0,1);" width="840.0" AnchorPane.bottomAnchor="532.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0" />
       <Button fx:id="BotãoVoltar" alignment="BOTTOM_LEFT" layoutX="44.0" layoutY="81.0" mnemonicParsing="false" onAction="#telaInicio" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: 0;" text="&lt;  Voltar" AnchorPane.bottomAnchor="494.0" AnchorPane.topAnchor="81.0">
@@ -41,86 +41,80 @@
          </font>
       </Label>
       <Button fx:id="BotãoEditarImagem" layoutX="92.0" layoutY="380.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: 0; -fx-border-color: #00ADEF;" text="Editar imagem" textFill="#00adef" />
-      <Label layoutX="283.0" layoutY="106.0" prefHeight="37.0" prefWidth="208.0" text="Login" textFill="#3871c1">
+      <Label layoutX="284.0" layoutY="131.0" prefHeight="37.0" prefWidth="208.0" text="Login" textFill="#3871c1">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="AlunoLogin" layoutX="282.0" layoutY="165.0" prefHeight="25.0" prefWidth="327.0" />
-      <Label layoutX="282.0" layoutY="139.0" prefHeight="27.0" prefWidth="200.0" text="Login:">
+      <TextField fx:id="AlunoLogin" layoutX="283.0" layoutY="190.0" prefHeight="25.0" prefWidth="327.0" />
+      <Label layoutX="283.0" layoutY="164.0" prefHeight="27.0" prefWidth="200.0" text="Login:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="AlunoSenha" layoutX="615.0" layoutY="165.0" prefHeight="25.0" prefWidth="158.0" />
-      <Label layoutX="615.0" layoutY="139.0" prefHeight="27.0" prefWidth="110.0" text="Senha:">
+      <TextField fx:id="AlunoSenha" layoutX="616.0" layoutY="190.0" prefHeight="25.0" prefWidth="158.0" />
+      <Label layoutX="616.0" layoutY="164.0" prefHeight="27.0" prefWidth="110.0" text="Senha:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="283.0" layoutY="191.0" prefHeight="37.0" prefWidth="208.0" text="Pessoal" textFill="#3871c1">
+      <Label layoutX="284.0" layoutY="216.0" prefHeight="37.0" prefWidth="208.0" text="Pessoal" textFill="#3871c1">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="282.0" layoutY="223.0" prefHeight="27.0" prefWidth="200.0" text="Nome Completo*:">
+      <Label layoutX="283.0" layoutY="248.0" prefHeight="27.0" prefWidth="200.0" text="Nome Completo*:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="CampoNomeSocial" layoutX="282.0" layoutY="300.0" prefHeight="25.0" prefWidth="327.0" />
-      <Label layoutX="282.0" layoutY="274.0" prefHeight="27.0" prefWidth="200.0" text="Nome social:">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="CampoCEP" layoutX="283.0" layoutY="383.0" prefHeight="25.0" prefWidth="127.0" />
-      <Label layoutX="284.0" layoutY="323.0" prefHeight="37.0" prefWidth="208.0" text="Endereço" textFill="#3871c1">
+      <TextField fx:id="CampoCEP" layoutX="282.0" layoutY="360.0" prefHeight="25.0" prefWidth="127.0" />
+      <Label layoutX="283.0" layoutY="300.0" prefHeight="37.0" prefWidth="208.0" text="Endereço" textFill="#3871c1">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="283.0" layoutY="357.0" prefHeight="27.0" prefWidth="53.0" text="CEP:">
+      <Label layoutX="282.0" layoutY="334.0" prefHeight="27.0" prefWidth="53.0" text="CEP:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="CampoLogradouro" layoutX="283.0" layoutY="441.0" prefHeight="25.0" prefWidth="327.0" />
-      <Label layoutX="283.0" layoutY="415.0" prefHeight="27.0" prefWidth="200.0" text="Logradouro:">
+      <TextField fx:id="CampoLogradouro" layoutX="282.0" layoutY="418.0" prefHeight="25.0" prefWidth="327.0" />
+      <Label layoutX="282.0" layoutY="392.0" prefHeight="27.0" prefWidth="200.0" text="Logradouro:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="CampoCidade" layoutX="416.0" layoutY="383.0" prefHeight="25.0" prefWidth="234.0" />
-      <Label layoutX="416.0" layoutY="357.0" prefHeight="27.0" prefWidth="86.0" text="Cidade:">
+      <TextField fx:id="CampoCidade" layoutX="415.0" layoutY="360.0" prefHeight="25.0" prefWidth="234.0" />
+      <Label layoutX="415.0" layoutY="334.0" prefHeight="27.0" prefWidth="86.0" text="Cidade:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="656.0" layoutY="357.0" prefHeight="27.0" prefWidth="86.0" text="UF:">
+      <Label layoutX="655.0" layoutY="334.0" prefHeight="27.0" prefWidth="86.0" text="UF:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="ChoiceBoxUF" layoutX="656.0" layoutY="383.0" prefHeight="25.0" prefWidth="116.0" />
-      <TextField fx:id="CampoNumero" layoutX="616.0" layoutY="441.0" prefHeight="25.0" prefWidth="158.0" />
-      <Label layoutX="616.0" layoutY="415.0" prefHeight="27.0" prefWidth="61.0" text="Número:">
+      <ChoiceBox fx:id="ChoiceBoxUF" layoutX="655.0" layoutY="360.0" prefHeight="25.0" prefWidth="116.0" />
+      <TextField fx:id="CampoNumero" layoutX="615.0" layoutY="418.0" prefHeight="25.0" prefWidth="158.0" />
+      <Label layoutX="615.0" layoutY="392.0" prefHeight="27.0" prefWidth="61.0" text="Número:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="CampoComplemento" layoutX="284.0" layoutY="500.0" prefHeight="25.0" prefWidth="277.0" />
-      <Label layoutX="284.0" layoutY="474.0" prefHeight="27.0" prefWidth="200.0" text="Complemento:">
+      <TextField fx:id="CampoComplemento" layoutX="283.0" layoutY="477.0" prefHeight="25.0" prefWidth="277.0" />
+      <Label layoutX="283.0" layoutY="451.0" prefHeight="27.0" prefWidth="200.0" text="Complemento:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="567.0" layoutY="474.0" prefHeight="27.0" prefWidth="61.0" text="Bairro:">
+      <Label layoutX="566.0" layoutY="451.0" prefHeight="27.0" prefWidth="61.0" text="Bairro:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="BotãoSalvar" layoutX="647.0" layoutY="547.0" mnemonicParsing="false" onAction="#autenticar" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: #00ADEF;" text="Salvar" textFill="#fafeff">
+      <Button fx:id="BotãoSalvar" layoutX="646.0" layoutY="524.0" mnemonicParsing="false" onAction="#autenticar" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: #00ADEF;" text="Salvar" textFill="#fafeff">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>

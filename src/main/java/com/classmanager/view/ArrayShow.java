@@ -12,6 +12,20 @@ import com.classmanager.view.Telas;
 import com.classmanager.model.*;
 
 public class ArrayShow {
-	ArrayList<Student> Aux = new ArrayList<Student>();
+	private static long id;
+	
+	public static void Guardar(long l) {
+		setid(l);	
+	}
+	
+	public static void setid(long i) {
+        if (i > 0) {
+            id = i;
+        }
+    }
+	
+	public static long getid() {
+		return id;
+	}
 	
 }

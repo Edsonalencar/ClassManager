@@ -79,14 +79,24 @@ public class Gerente_CadastrarAluno implements Initializable {
 		else{
 			numero = Integer.parseInt(CampoNumero.getText());
 		}
-		Address end = new Address(null, cidade, estado, bairro, numero);
+		Address end = new Address(cidade, estado, bairro, numero);
 		
 		if (!login.isEmpty() && !senha.isEmpty() && !nome.isEmpty() && !cidade.isEmpty() && !bairro.isEmpty() && !estado.isEmpty()
 				&& numero != 0) {
 			Usuario user = new Usuario(login, senha);
 			Student aluno = new Student(nome, ""+mat, end, user);
-			daoAluno.register(aluno);
-			Telas.Gerente_TelaAlunos();
+			List<Student> stud = new ArrayList<>();
+			stud = daoAluno.getAll();
+			for (Student s : stud) {
+				if(stud.contains(s)){
+					daoAluno.update(aluno);
+					Telas.Gerente_TelaAlunos();
+				}
+				else {
+					daoAluno.register(aluno);
+					Telas.Gerente_TelaAlunos();
+				}
+			}
 		}
 		else {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
