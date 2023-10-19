@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.classmanager.enums.*;
 import com.classmanager.view.Telas;
 import com.classmanager.model.Student;
 import com.classmanager.model.Usuario;
@@ -82,11 +83,9 @@ public class Gerente_CadastrarAluno implements Initializable {
 		
 		if (!login.isEmpty() && !senha.isEmpty() && !nome.isEmpty() && !cidade.isEmpty() && !bairro.isEmpty() && !estado.isEmpty()
 				&& numero != 0) {
-			Student aluno = new Student(nome, ""+mat, end);
 			Usuario user = new Usuario(login, senha);
-			
+			Student aluno = new Student(nome, ""+mat, end, user);
 			daoAluno.register(aluno);
-			daoUsuario.register(user);
 			Telas.Gerente_TelaAlunos();
 		}
 		else {

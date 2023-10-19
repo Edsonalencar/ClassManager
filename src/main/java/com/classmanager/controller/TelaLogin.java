@@ -5,6 +5,7 @@ import com.classmanager.model.Teacher;
 import com.classmanager.model.Usuario;
 import com.classmanager.view.Telas;
 import com.classmanager.DAO.UsuarioDAO;
+import com.classmanager.enums.RoleType;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,9 +30,22 @@ public class TelaLogin {
         System.out.println("Login: " + CampoUsuario.getText());
         System.out.println("Senha: " + CampoSenha.getText());
 
-        UsuarioDAO usuario = new UsuarioDAO();
-        Student student = new Student();
-        Teacher teacher = new Teacher();
-        List<Usuario> usu;
+        UsuarioDAO usu = new UsuarioDAO();
+        Usuario user = usu.loginUser(CampoUsuario.getText(), CampoSenha.getText());
+        
+        if (user == null) {
+        	LabelErro.setVisible(true);
+        }
+        else {
+        	if (user.getRole() == RoleType.ADMIN) {
+        		Telas.Gerente_TelaInicial();
+        	}
+        	else if (user.getRole() == RoleType.TEACHER) {
+        		Telas.Professor_TelaInicial();
+        	}
+        	else if (user.getRole() == RoleType.STUDENT) {
+        		Telas.Aluno_TelaInicial();
+        	}
+        }
     }
 }
