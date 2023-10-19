@@ -1,27 +1,40 @@
 package com.classmanager.DAO;
 
+import com.classmanager.model.Address;
+import com.classmanager.model.Student;
 import com.classmanager.model.Timetable;
+import com.classmanager.model.Usuario;
+
+import java.sql.*;
 
 import java.sql.Connection;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class TimetableDAO extends BaseDAO {
     private Connection con = getConection();
 
-    public void register(Timetable timetable) {
+    public Timetable register(Timetable timetable) {
         String sql = "INSERT INTO timetable (start_time, end_time) VALUES (?, ?)";
 
-        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+        try (PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             pstmt.setObject(1, timetable.getStart_time());
             pstmt.setObject(2, timetable.getEnd_time());
 
-            pstmt.executeUpdate();
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected == 1) {
+                ResultSet generatedKeys = pstmt.getGeneratedKeys();
+
+                if (generatedKeys.next()) {
+                    int generatedId = generatedKeys.getInt(1);
+                    timetable.setId((long) generatedId);
+
+                    return timetable;
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return null;
     }
 
     public void update(Timetable timetable) {
@@ -48,6 +61,28 @@ public class TimetableDAO extends BaseDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public Timetable getById(Long id) {
+        String sql = "SELECT * FROM timetable WHERE id = ?";
+        Timetable tb = new Timetable();
+
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setLong(1, id);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                tb.setId(rs.getLong("id"));
+                tb.setStart_time(rs.getDate("start_time").toLocalDate());
+                tb.setEnd_time(rs.getDate("end_time").toLocalDate());
+
+                return tb;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
 

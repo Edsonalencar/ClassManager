@@ -63,14 +63,14 @@ public class StudentDAO extends BaseDAO {
     }
 
     public void update(Student student) {
-        String sql = "UPDATE student SET name = ?, code = ?, address_id = ? WHERE id = ?";
+        String sql = "UPDATE student SET name = ?, code = ? WHERE id = ?";
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setString(1, student.getName());
             pstmt.setString(2, student.getCode());
-            pstmt.setLong(3, student.getAddress().getId());
-            pstmt.setLong(4, student.getId());
+            pstmt.setLong(3, student.getId());
 
+            addressDAO.update(student.getAddress());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -132,6 +132,34 @@ public class StudentDAO extends BaseDAO {
         }
 
         return students;
+    }
+
+    public Student getById(Long id) {
+        Student student = new Student();
+        String sql = "SELECT * FROM student WHERE id = ?";
+
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setLong(1, id);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                student.setId(rs.getLong("id"));
+                student.setName(rs.getString("name"));
+                student.setCode(rs.getString("code"));
+
+                Address address = addressDAO.getById(rs.getLong("address_id"));
+                Usuario user = usuarioDAO.getById(rs.getLong("usuario_id"));
+
+                student.setAddress(address);
+                student.setUser(user);
+
+                return  student;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     public List<Student> findStudentsByClass(Long classId) {

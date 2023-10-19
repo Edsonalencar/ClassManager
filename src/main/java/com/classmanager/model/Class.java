@@ -12,27 +12,26 @@ public class Class {
     private String period;
     private ClassStatus status;
     private ArrayList<Student> students;
-    private ArrayList<Teacher> teachers;
-
+    private Teacher teacher;
 
     public Class() {}
-    public Class(Long id, Discipline discipline, Timetable timetable, String local, String period, ClassStatus status, ArrayList<Student> students, ArrayList<Teacher> teachers) {
+    public Class(Long id, Discipline discipline, Timetable timetable, String local, String period, ClassStatus status,Teacher teacher, ArrayList<Student> students) {
         setDiscipline(discipline);
         setLocal(local);
         setStatus(status);
         setPeriod(period);
         setId(id);
         setTimetable(timetable);
-        setTeachers(teachers);
+        setTeacher(teacher);
         setStudents(students);
     }
-    public Class(Discipline discipline, Timetable timetable, String local, String period, ClassStatus status, ArrayList<Student> students, ArrayList<Teacher> teachers) {
+    public Class(Discipline discipline, Timetable timetable, String local, String period, ClassStatus status, Teacher teacher, ArrayList<Student> students) {
         setDiscipline(discipline);
         setLocal(local);
         setStatus(status);
         setPeriod(period);
         setTimetable(timetable);
-        setTeachers(teachers);
+        setTeacher(teacher);
         setStudents(students);
     }
 
@@ -68,11 +67,13 @@ public class Class {
     public void setStudents(ArrayList<Student> students) {
         this.students = students;
     }
-    public ArrayList<Teacher> getTeachers() {
-        return teachers;
+
+    public Teacher getTeacher() {
+        return teacher;
     }
-    public void setTeachers(ArrayList<Teacher> teachers) {
-        this.teachers = teachers;
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 
     public Long getId() {
@@ -93,33 +94,6 @@ public class Class {
     }
 
 
-
-    public void register(Class Cl) {
-        //Cadastra no Banco de Dados
-    }
-    public void update(Class Cl) {
-        //Atualiza no Banco de Dados
-    }
-    public ArrayList<Student> addStudent(Student St){
-        students.add(St);
-
-        return  this.students;
-    }
-    public ArrayList<Student>  deleteStudent(Student St){
-        students.remove(St);
-
-        return  this.students;
-    }
-    public void  findClassBySudent() {
-        //Busca classe por estudante no Banco de Dados
-    }
-    public void  findClassByTeacher(){
-        //Busca classe por professor no Banco de Dados
-    }
-    public void  findClassByDiscipline(){
-        //Busca classe por disciplina no Banco de Dados
-    }
-
     @Override
     public String toString() {
         return "Class{" +
@@ -130,7 +104,7 @@ public class Class {
                 ", period='" + period + '\'' +
                 ", status=" + status +
                 ", students=" + students +
-                ", teachers=" + teachers +
+                ", teacher=" + teacher +
                 '}';
     }
 }
